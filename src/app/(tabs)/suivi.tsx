@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Alert, Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { showDialog } from '../../components/Dialog';
 import { LineChart } from '../../components/LineChart';
 import { Button, Card, Field, Pill, Row, Screen, Segmented, T, formatKg, parseNumber } from '../../components/ui';
 import { formatDuration, formatLongWithYear, formatShort, todayISO } from '../../domain/dates';
@@ -7,13 +8,9 @@ import { useAppStore } from '../../store/useAppStore';
 import { space, usePalette } from '../../theme';
 
 function confirmDelete(message: string, onYes: () => void) {
-  if (Platform.OS === 'web') {
-    if (globalThis.confirm?.(message)) onYes();
-    return;
-  }
-  Alert.alert('Supprimer', message, [
-    { text: 'Annuler', style: 'cancel' },
+  showDialog('Supprimer', message, [
     { text: 'Supprimer', style: 'destructive', onPress: onYes },
+    { text: 'Annuler', style: 'cancel' },
   ]);
 }
 
@@ -43,7 +40,7 @@ export default function TrackingScreen() {
     const t = parseNumber(waist);
     if (w === undefined && t === undefined) return;
     if ((w !== undefined && (w < 30 || w > 300)) || (t !== undefined && (t < 40 || t > 250))) {
-      Alert.alert('Valeur inhabituelle', 'Vérifie la saisie (poids en kg, tour de taille en cm).');
+      showDialog('Valeur inhabituelle', 'Vérifie la saisie (poids en kg, tour de taille en cm).');
       return;
     }
     saveMeasurement({ date: todayISO(), weight: w, waist: t });

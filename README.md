@@ -59,6 +59,16 @@ npm run lint        # ESLint
 npx expo start --web  # aperçu rapide dans le navigateur (sans notifications ni vibration)
 ```
 
+### Version web en un seul fichier (aperçu sans ordinateur)
+
+```bash
+# exporter sans découpage du code (asyncRoutes.web = false dans le plugin expo-router), puis :
+node scripts/build-web-artifact.js <dossier-export> evolve.html
+```
+
+Donne une page HTML autonome (JS, police d'icônes, son et images intégrés) qui s'ouvre dans un
+navigateur. Pas de notifications ni de vibration sur le web ; les données restent dans le navigateur.
+
 ## Synchro entre appareils (facultatif)
 
 Sans configuration, l'app est 100 % hors ligne : les données restent sur le téléphone (avec export JSON

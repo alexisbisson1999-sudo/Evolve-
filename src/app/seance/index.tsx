@@ -1,9 +1,10 @@
 import { useKeepAwake } from 'expo-keep-awake';
 import { router, Stack } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, Platform, ScrollView, StyleSheet, View, type ScrollViewInstance } from 'react-native';
+import { ScrollView, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getProgram, pickMotivation } from '../../../content';
+import { showDialog } from '../../components/Dialog';
 import { ExerciseCard, ExerciseRow, WarmupGroup } from '../../components/ExerciseCard';
 import { TimerPanel, useWorkoutTimer } from '../../components/Timer';
 import { Button, Row, Screen, T } from '../../components/ui';
@@ -14,17 +15,7 @@ import { useResolveOptions } from '../../hooks/useProgram';
 import { useAppStore } from '../../store/useAppStore';
 import { radius, space, usePalette } from '../../theme';
 
-type Btn = { text: string; style?: 'destructive' | 'cancel'; onPress?: () => void };
-
-function confirm(title: string, message: string, buttons: Btn[]) {
-  if (Platform.OS === 'web') {
-    // Alert multi-boutons non supporté sur le web : on simplifie.
-    const main = buttons.find((b) => b.style !== 'cancel');
-    if (globalThis.confirm?.(`${title}\n\n${message}`)) main?.onPress?.();
-    return;
-  }
-  Alert.alert(title, message, buttons);
-}
+const confirm = showDialog;
 
 export default function WorkoutScreen() {
   useKeepAwake(); // écran maintenu allumé pendant la séance

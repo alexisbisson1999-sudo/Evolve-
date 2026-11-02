@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo } from 'react';
 import { ActivityIndicator, AppState, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { DialogHost } from '../components/Dialog';
 import { rescheduleReminders } from '../services/notifications';
 import { getSession, syncConfigured, syncNow } from '../services/sync';
 import { useAppStore, useHydrated } from '../store/useAppStore';
@@ -89,6 +90,7 @@ export default function RootLayout() {
             <Stack.Screen name="galerie" options={{ title: 'Mouvements' }} />
           </Stack>
         )}
+        <DialogHost />
       </ThemeProvider>
     </SafeAreaProvider>
   );

@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Alert } from 'react-native';
+import { showDialog } from '../components/Dialog';
 import type { ResolvedSession } from '../domain/types';
 import { useAppStore } from '../store/useAppStore';
 
@@ -15,7 +15,7 @@ export function startOrResume(session: ResolvedSession, date: string) {
     router.push('/seance');
     return;
   }
-  Alert.alert(
+  showDialog(
     'Séance en cours',
     'Une autre séance est déjà en cours. La remplacer ? Les séries cochées seront perdues.',
     [

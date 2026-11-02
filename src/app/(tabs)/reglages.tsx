@@ -1,6 +1,7 @@
 import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
-import { Alert, Platform, Share, Switch, View } from 'react-native';
+import { Platform, Share, Switch, View } from 'react-native';
+import { showDialog } from '../../components/Dialog';
 import { Button, Card, Field, Row, Screen, Segmented, Stepper, T, formatKg } from '../../components/ui';
 import { addDays, formatLongWithYear, formatTime, mondayOf, todayISO } from '../../domain/dates';
 import type { ThemePref } from '../../domain/types';
@@ -113,13 +114,9 @@ export default function SettingsScreen() {
 
   const reset = () => {
     const doIt = () => useAppStore.getState().resetAll();
-    if (Platform.OS === 'web') {
-      if (globalThis.confirm?.('Effacer toutes les données de cet appareil ?')) doIt();
-      return;
-    }
-    Alert.alert('Tout effacer ?', 'Historique, mesures et réglages de cet appareil seront supprimés.', [
-      { text: 'Annuler', style: 'cancel' },
+    showDialog('Tout effacer ?', 'Historique, mesures et réglages de cet appareil seront supprimés.', [
       { text: 'Effacer', style: 'destructive', onPress: doIt },
+      { text: 'Annuler', style: 'cancel' },
     ]);
   };
 
@@ -155,7 +152,7 @@ export default function SettingsScreen() {
           value={settings.reminderEnabled}
           onChange={async (v) => {
             if (v && Platform.OS !== 'web' && !(await ensurePermission())) {
-              Alert.alert('Notifications refusées', 'Autorise les notifications dans les réglages du téléphone.');
+              showDialog('Notifications refusées', 'Autorise les notifications dans les réglages du téléphone.');
               return;
             }
             update({ reminderEnabled: v });
