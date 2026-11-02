@@ -29,6 +29,8 @@ Détails : [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Lancer l'app sur ton téléphone
 
+> **Guide pas à pas pour iPhone : [docs/LANCER-SUR-IPHONE.md](docs/LANCER-SUR-IPHONE.md).**
+
 Prérequis : Node.js 20 ou plus récent sur ton ordinateur, et l'app **Expo Go** (App Store / Google Play) sur ton téléphone.
 
 ```bash
@@ -38,7 +40,8 @@ npx expo start
 ```
 
 Scanne le QR code affiché :
-- **iPhone** : avec l'appareil photo, puis ouvre le lien dans Expo Go ;
+- **iPhone** : avec l'appareil photo, puis ouvre le lien dans Expo Go (Expo Go et l'ordinateur doivent être
+  connectés au même compte Expo gratuit : `npx expo login`) ;
 - **Android** : depuis Expo Go (« Scan QR code »).
 
 Le téléphone et l'ordinateur doivent être sur le même Wi-Fi. Sinon : `npx expo start --tunnel`.
