@@ -56,6 +56,7 @@ interface Actions {
   cancelWorkout: () => void;
   deleteLog: (id: string) => void;
   setLogFeeling: (id: string, feeling: Feeling) => void;
+  setLogComment: (id: string, comment: string) => void;
 
   getSynced: () => SyncedData;
   applySynced: (d: SyncedData) => void;
@@ -226,6 +227,15 @@ export const useAppStore = create<State & Actions>()(
       },
 
       cancelWorkout: () => set({ active: null }),
+
+      setLogComment: (id, comment) => {
+        const now = Date.now();
+        const text = comment.trim().slice(0, 2000);
+        set((s) => ({
+          history: s.history.map((h) => (h.id === id ? { ...h, comment: text || undefined, updatedAt: now } : h)),
+          dirtyAt: now,
+        }));
+      },
 
       setLogFeeling: (id, feeling) => {
         const now = Date.now();

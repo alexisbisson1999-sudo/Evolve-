@@ -152,6 +152,11 @@ export default function TrackingScreen() {
                 <T v="small">
                   {formatLongWithYear(h.date)} · {formatDuration(h.durationSec)} · semaine {h.week}
                 </T>
+                {h.comment ? (
+                  <T v="muted" style={{ fontStyle: 'italic' }} numberOfLines={open ? undefined : 2}>
+                    « {h.comment} »
+                  </T>
+                ) : null}
               </Pressable>
               {open &&
                 h.blocks.map((b) => (

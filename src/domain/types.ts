@@ -144,6 +144,8 @@ export interface WorkoutLog {
   blocks: LoggedBlock[];
   /** Ressenti donné en fin de séance. */
   feeling?: Feeling;
+  /** Commentaire libre écrit après la séance. */
+  comment?: string;
   updatedAt: number;
 }
 

@@ -1,6 +1,6 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 import { pickMotivation } from '../../../content';
 import { Button, Card, Row, Screen, T } from '../../components/ui';
 import { formatDuration } from '../../domain/dates';
@@ -22,6 +22,8 @@ export default function SummaryScreen() {
   const c = usePalette();
   const log = useAppStore((s) => s.history.find((h) => h.id === id));
   const setFeeling = useAppStore((s) => s.setLogFeeling);
+  const setComment = useAppStore((s) => s.setLogComment);
+  const [note, setNote] = useState(() => log?.comment ?? '');
   const [headline] = useState(() => pickMotivation('sessionEnd'));
   const [answer, setAnswer] = useState<string | null>(null);
 
@@ -38,7 +40,18 @@ export default function SummaryScreen() {
   const validated = main.filter((b) => b.validated).length;
 
   return (
-    <Screen footer={<Button big title="Retour à l'accueil" onPress={() => router.dismissTo('/')} />}>
+    <Screen
+      footer={
+        <Button
+          big
+          title="Retour à l'accueil"
+          onPress={() => {
+            setComment(log.id, note);
+            router.dismissTo('/');
+          }}
+        />
+      }
+    >
       <Stack.Screen options={{ title: 'Bravo !', headerLeft: () => null, gestureEnabled: false }} />
       <View style={{ alignItems: 'center', gap: space.sm, paddingTop: space.lg }}>
         <Text style={{ fontSize: 72 }}>🎉</Text>
@@ -111,6 +124,33 @@ export default function SummaryScreen() {
             facile que s'arrêter.
           </T>
         ) : null}
+      </Card>
+
+      <Card>
+        <T v="title">Un mot sur cette séance ?</T>
+        <TextInput
+          value={note}
+          onChangeText={setNote}
+          onEndEditing={() => setComment(log.id, note)}
+          onBlur={() => setComment(log.id, note)}
+          multiline
+          maxLength={2000}
+          placeholder="Ex. : genou gauche sensible sur les fentes, pompes plus faciles que prévu…"
+          placeholderTextColor={c.textFaint}
+          accessibilityLabel="Commentaire libre"
+          style={{
+            minHeight: 110,
+            borderRadius: radius.md,
+            borderWidth: 1,
+            borderColor: c.border,
+            backgroundColor: c.surfaceAlt,
+            color: c.text,
+            padding: space.md,
+            fontSize: 17,
+            textAlignVertical: 'top',
+          }}
+        />
+        <T v="small">Facultatif. Tu le retrouves dans Suivi › Historique des séances.</T>
       </Card>
     </Screen>
   );
