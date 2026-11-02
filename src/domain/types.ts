@@ -23,6 +23,8 @@ export interface ExerciseDef {
   equipment: string[];
   usesLoad: boolean;
   defaultLoad?: number;
+  /** Cran d'augmentation de charge (kg). Défaut : 2,5. */
+  loadStep?: number;
   loadHint?: string;
   steps: string[];
   tips: string[];
@@ -179,6 +181,8 @@ export interface Settings {
   soundEnabled: boolean;
   vibrationEnabled: boolean;
   theme: ThemePref;
+  /** Ajustement automatique des charges et du max de pompes en fin de séance. */
+  autoProgression: boolean;
   heightCm: number;
   goalWeight: number;
   goalWaist?: number;

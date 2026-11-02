@@ -1,9 +1,10 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
-import { pickMotivation } from '../../../content';
-import { Button, Card, Row, Screen, T } from '../../components/ui';
+import { getProgram, pickMotivation } from '../../../content';
+import { Button, Card, formatKg, Row, Screen, T } from '../../components/ui';
 import { formatDuration } from '../../domain/dates';
+import { computeAdjustments, type Adjustment } from '../../domain/progression';
 import type { Feeling } from '../../domain/types';
 import { useAppStore } from '../../store/useAppStore';
 import { radius, space, usePalette } from '../../theme';
@@ -26,6 +27,25 @@ export default function SummaryScreen() {
   const [note, setNote] = useState(() => log?.comment ?? '');
   const [headline] = useState(() => pickMotivation('sessionEnd'));
   const [answer, setAnswer] = useState<string | null>(null);
+  const history = useAppStore((s) => s.history);
+  const loads = useAppStore((s) => s.loads);
+  const settings = useAppStore((s) => s.settings);
+  const [skipped, setSkipped] = useState<Set<string>>(() => new Set());
+
+  // Progression automatique : recalculée quand le ressenti change.
+  const adjustments = useMemo<Adjustment[]>(() => {
+    if (!log || !settings.autoProgression) return [];
+    return computeAdjustments(getProgram(log.programId), history, log, loads, settings.maxPushups);
+  }, [log, history, loads, settings.autoProgression, settings.maxPushups]);
+
+  const applyAdjustments = () => {
+    const st = useAppStore.getState();
+    for (const a of adjustments) {
+      if (skipped.has(a.exerciseId)) continue;
+      if (a.kind === 'load') st.setLoad(a.exerciseId, a.to);
+      else st.updateSettings({ maxPushups: a.to });
+    }
+  };
 
   if (!log) {
     return (
@@ -47,6 +67,7 @@ export default function SummaryScreen() {
           title="Retour à l'accueil"
           onPress={() => {
             setComment(log.id, note);
+            applyAdjustments();
             router.dismissTo('/');
           }}
         />
@@ -125,6 +146,58 @@ export default function SummaryScreen() {
           </T>
         ) : null}
       </Card>
+
+      {adjustments.length > 0 && (
+        <Card>
+          <T v="title">Pour la prochaine fois</T>
+          {adjustments.map((a) => {
+            const on = !skipped.has(a.exerciseId);
+            const fmt = (v: number) => (a.kind === 'load' ? formatKg(v) : String(v));
+            return (
+              <Pressable
+                key={a.exerciseId}
+                onPress={() =>
+                  setSkipped((prev) => {
+                    const next = new Set(prev);
+                    if (next.has(a.exerciseId)) next.delete(a.exerciseId);
+                    else next.add(a.exerciseId);
+                    return next;
+                  })
+                }
+                accessibilityRole="checkbox"
+                accessibilityState={{ checked: on }}
+                accessibilityLabel={`${a.name} : ${fmt(a.from)} vers ${fmt(a.to)}`}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: space.md, minHeight: 64 }}
+              >
+                <View
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: 8,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: on ? c.done : 'transparent',
+                    borderWidth: on ? 0 : 2,
+                    borderColor: c.border,
+                  }}
+                >
+                  {on ? <Text style={{ color: c.scheme === 'dark' ? '#0D0F12' : '#fff', fontWeight: '800', fontSize: 18 }}>✓</Text> : null}
+                </View>
+                <View style={{ flex: 1 }}>
+                  <T v="body" style={{ fontWeight: '700' }}>
+                    {a.name}
+                  </T>
+                  <T v="small">{a.reason}</T>
+                </View>
+                <T v="body" style={{ fontWeight: '800', color: a.to > a.from ? c.done : c.textMuted, fontVariant: ['tabular-nums'] }}>
+                  {fmt(a.from)} → {fmt(a.to)}
+                </T>
+              </Pressable>
+            );
+          })}
+          <T v="small">Appliqué en revenant à l'accueil. Décoche ce que tu préfères garder tel quel.</T>
+        </Card>
+      )}
 
       <Card>
         <T v="title">Un mot sur cette séance ?</T>

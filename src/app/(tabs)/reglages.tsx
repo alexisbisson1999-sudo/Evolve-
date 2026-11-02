@@ -178,6 +178,12 @@ export default function SettingsScreen() {
 
       <Card>
         <T v="title">Séance</T>
+        <SwitchRow
+          label="Progression automatique"
+          value={settings.autoProgression}
+          onChange={(v) => update({ autoProgression: v })}
+          hint="Propose d'ajuster charges et max de pompes en fin de séance, selon tes séries et ton ressenti."
+        />
         <SwitchRow label="Son en fin de chrono" value={settings.soundEnabled} onChange={(v) => update({ soundEnabled: v })} />
         <SwitchRow label="Vibration en fin de chrono" value={settings.vibrationEnabled} onChange={(v) => update({ vibrationEnabled: v })} />
         <T v="small">Le temps de repos se règle (45 à 120 s) directement sur chaque exercice pendant la séance ; il est mémorisé.</T>

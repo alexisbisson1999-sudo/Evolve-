@@ -28,6 +28,7 @@ export const defaultSettings = (): Settings => ({
   soundEnabled: true,
   vibrationEnabled: true,
   theme: 'system',
+  autoProgression: true,
   heightCm: 177,
   goalWeight: 85,
   goalWaist: undefined,
