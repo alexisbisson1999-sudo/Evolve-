@@ -85,6 +85,8 @@ export default function RootLayout() {
             <Stack.Screen name="seance/index" options={{ title: 'Séance', gestureEnabled: false }} />
             <Stack.Screen name="apercu/[id]" options={{ title: 'Aperçu' }} />
             <Stack.Screen name="exercice/[id]" options={{ title: 'Explication', presentation: 'modal' }} />
+            <Stack.Screen name="bilan/[id]" options={{ title: 'Bravo !', gestureEnabled: false }} />
+            <Stack.Screen name="galerie" options={{ title: 'Mouvements' }} />
           </Stack>
         )}
       </ThemeProvider>

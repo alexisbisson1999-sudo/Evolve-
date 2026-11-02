@@ -8,6 +8,7 @@ import type { SyncedData } from '../domain/merge';
 import { clampRest } from '../domain/program';
 import type {
   ActiveWorkout,
+  Feeling,
   LoggedBlock,
   Measurement,
   ResolvedSession,
@@ -54,6 +55,7 @@ interface Actions {
   finishWorkout: (s: ResolvedSession, validateAll: boolean) => WorkoutLog | null;
   cancelWorkout: () => void;
   deleteLog: (id: string) => void;
+  setLogFeeling: (id: string, feeling: Feeling) => void;
 
   getSynced: () => SyncedData;
   applySynced: (d: SyncedData) => void;
@@ -224,6 +226,14 @@ export const useAppStore = create<State & Actions>()(
       },
 
       cancelWorkout: () => set({ active: null }),
+
+      setLogFeeling: (id, feeling) => {
+        const now = Date.now();
+        set((s) => ({
+          history: s.history.map((h) => (h.id === id ? { ...h, feeling, updatedAt: now } : h)),
+          dirtyAt: now,
+        }));
+      },
 
       deleteLog: (id) => {
         const now = Date.now();

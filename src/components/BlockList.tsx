@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { targetLabel } from '../domain/program';
+import { Pictogram } from './Pictogram';
 import type { ResolvedBlock } from '../domain/types';
 import { space, usePalette } from '../theme';
 import { T } from './ui';
@@ -28,6 +29,7 @@ export function BlockList({ blocks, warmupTitle }: { blocks: ResolvedBlock[]; wa
         gap: space.md,
       })}
     >
+      <Pictogram exerciseId={b.exerciseId} size={52} animate={false} />
       <T v="body" style={{ flex: 1 }}>
         {b.exercise.name}
       </T>

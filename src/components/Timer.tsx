@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AppState, View } from 'react-native';
 import { formatClock } from '../domain/dates';
-import { clampRest, REST_MAX, REST_MIN } from '../domain/program';
+import { clampRest } from '../domain/program';
 import { useEndSignal } from '../services/feedback';
 import { radius, space, usePalette } from '../theme';
 import { Button, IconButton, Row, T } from './ui';
+
+export type TimerMode = 'rest' | 'effort' | 'free';
 
 /**
  * Chrono basé sur l'heure de fin (et non un compteur) : reste juste même si
@@ -13,8 +15,10 @@ import { Button, IconButton, Row, T } from './ui';
 export type TimerState =
   | null
   | {
-      mode: 'rest' | 'effort';
+      mode: TimerMode;
       title: string;
+      /** Phrase d'encouragement affichée pendant le chrono. */
+      quote?: string;
       /** Phases successives (ex. côté gauche puis côté droit), en secondes. */
       phases: { label?: string; seconds: number }[];
       phase: number;
@@ -24,6 +28,15 @@ export type TimerState =
       /** Identifiant de l'exercice concerné (pour mémoriser le repos). */
       ref?: string;
     };
+
+export interface StartOptions {
+  mode: TimerMode;
+  title: string;
+  phases: { label?: string; seconds: number }[];
+  quote?: string;
+  onDone?: () => void;
+  ref?: string;
+}
 
 export function useWorkoutTimer() {
   const [timer, setTimer] = useState<TimerState>(null);
@@ -58,32 +71,25 @@ export function useWorkoutTimer() {
     return () => clearTimeout(id);
   }, [finished, t, signal]);
 
-  const start = useCallback(
-    (
-      mode: 'rest' | 'effort',
-      title: string,
-      phases: { label?: string; seconds: number }[],
-      onDone?: () => void,
-      ref?: string,
-    ) => {
-      if (!phases.length || phases[0].seconds <= 0) return;
-      setNow(Date.now());
-      setTimer({ mode, title, phases, phase: 0, endsAt: Date.now() + phases[0].seconds * 1000, onDone, ref });
-    },
-    [],
-  );
+  const start = useCallback((o: StartOptions) => {
+    if (!o.phases.length || o.phases[0].seconds <= 0) return;
+    setNow(Date.now());
+    setTimer({ ...o, phase: 0, endsAt: Date.now() + o.phases[0].seconds * 1000 });
+  }, []);
 
   const stop = useCallback(() => setTimer(null), []);
 
   const adjust = useCallback((deltaSec: number) => {
     setTimer((t) => {
       if (!t) return t;
-      if (t.mode === 'rest') {
-        const elapsed = t.phases[0].seconds * 1000 - (t.endsAt - Date.now());
-        const total = clampRest(t.phases[0].seconds + deltaSec);
-        return { ...t, phases: [{ seconds: total }], endsAt: Date.now() + total * 1000 - elapsed };
+      const cur = t.phases[t.phase].seconds;
+      const total = t.mode === 'rest' ? clampRest(cur + deltaSec) : Math.max(5, cur + deltaSec);
+      const applied = total - cur;
+      const phases = t.phases.map((p, i) => (i === t.phase ? { ...p, seconds: total } : p));
+      if (t.pausedRemaining !== undefined) {
+        return { ...t, phases, pausedRemaining: Math.max(1000, t.pausedRemaining + applied * 1000) };
       }
-      return { ...t, endsAt: t.endsAt + deltaSec * 1000 };
+      return { ...t, phases, endsAt: t.endsAt + applied * 1000 };
     });
   }, []);
 
@@ -101,6 +107,9 @@ export function useWorkoutTimer() {
   return { timer, remaining, start, stop, adjust, togglePause };
 }
 
+const LABELS: Record<TimerMode, string> = { rest: 'Repos', effort: 'Effort', free: 'Chrono' };
+
+/** Panneau du chrono, en bas de l'écran (zone du pouce). */
 export function TimerPanel({
   t,
   onRestTotalChange,
@@ -113,74 +122,51 @@ export function TimerPanel({
   if (!timer) return null;
   const phase = timer.phases[timer.phase];
   const isRest = timer.mode === 'rest';
+  const tint = isRest ? c.accent : c.done;
   const total = phase.seconds;
   const progress = total > 0 ? 1 - remaining / total : 1;
   const paused = timer.pausedRemaining !== undefined;
 
+  const change = (delta: number) => {
+    t.adjust(delta);
+    if (isRest) onRestTotalChange?.(clampRest(total + delta));
+  };
+
   return (
     <View
-      style={{
-        backgroundColor: isRest ? c.accentSoft : c.doneSoft,
-        borderRadius: radius.lg,
-        padding: space.md,
-        gap: space.sm,
-      }}
+      style={{ backgroundColor: isRest ? c.accentSoft : c.doneSoft, borderRadius: radius.lg, padding: space.md, gap: space.sm }}
       accessibilityLiveRegion="polite"
     >
-      <Row style={{ justifyContent: 'space-between' }}>
-        <View style={{ flex: 1 }}>
-          <T v="label">{isRest ? 'Repos' : 'Effort'}</T>
-          <T v="small" numberOfLines={1}>
-            {timer.title}
-            {phase.label ? ` · ${phase.label}` : ''}
-            {isRest ? ` · ${total} s` : ''}
-          </T>
-        </View>
-        <T v="huge" style={{ color: isRest ? c.accent : c.done }}>
+      <Row gap={space.md}>
+        <T v="huge" style={{ color: tint, fontSize: 60, lineHeight: 66 }}>
           {formatClock(remaining)}
         </T>
+        <View style={{ flex: 1, gap: 2 }}>
+          <T v="label" style={{ color: tint }}>
+            {LABELS[timer.mode]}
+            {phase.label ? ` · ${phase.label}` : ''}
+          </T>
+          <T v="body" style={{ fontWeight: '700' }} numberOfLines={2}>
+            {timer.title}
+          </T>
+        </View>
       </Row>
-      <View style={{ height: 6, borderRadius: 3, backgroundColor: c.surface, overflow: 'hidden' }}>
-        <View
-          style={{
-            width: `${Math.min(100, Math.max(0, progress * 100))}%`,
-            height: 6,
-            backgroundColor: isRest ? c.accent : c.done,
-          }}
-        />
+      <View style={{ height: 8, borderRadius: 4, backgroundColor: c.surface, overflow: 'hidden' }}>
+        <View style={{ width: `${Math.min(100, Math.max(0, progress * 100))}%`, height: 8, backgroundColor: tint }} />
       </View>
-      <Row>
-        <IconButton
-          label="−15"
-          accessibilityLabel="Retirer 15 secondes"
-          onPress={() => {
-            t.adjust(-15);
-            if (isRest) onRestTotalChange?.(clampRest(total - 15));
-          }}
-          size={56}
-        />
-        <IconButton
-          label="+15"
-          accessibilityLabel="Ajouter 15 secondes"
-          onPress={() => {
-            t.adjust(15);
-            if (isRest) onRestTotalChange?.(clampRest(total + 15));
-          }}
-          size={56}
-        />
-        <Button
-          title={paused ? 'Reprendre' : 'Pause'}
-          variant="secondary"
-          onPress={t.togglePause}
-          style={{ flex: 1 }}
-        />
-        <Button title={isRest ? 'Passer' : 'Arrêter'} variant="secondary" onPress={t.stop} style={{ flex: 1 }} />
-      </Row>
-      {isRest && (
-        <T v="small">
-          Repos réglable de {REST_MIN} à {REST_MAX} s — mémorisé pour cet exercice.
+      {timer.quote ? (
+        <T v="muted" style={{ fontStyle: 'italic' }} numberOfLines={2}>
+          {timer.quote}
         </T>
-      )}
+      ) : null}
+      <Row>
+        <IconButton label="−15" accessibilityLabel="Retirer 15 secondes" onPress={() => change(-15)} size={60} />
+        <IconButton label="+15" accessibilityLabel="Ajouter 15 secondes" onPress={() => change(15)} size={60} />
+        {!isRest && (
+          <Button title={paused ? 'Reprendre' : 'Pause'} variant="secondary" onPress={t.togglePause} style={{ flex: 1, minHeight: 60 }} />
+        )}
+        <Button title={isRest ? 'Passer' : 'Arrêter'} variant="secondary" onPress={t.stop} style={{ flex: 1, minHeight: 60 }} />
+      </Row>
     </View>
   );
 }

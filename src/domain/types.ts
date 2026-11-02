@@ -142,8 +142,12 @@ export interface WorkoutLog {
   endedAt: number;
   durationSec: number;
   blocks: LoggedBlock[];
+  /** Ressenti donné en fin de séance. */
+  feeling?: Feeling;
   updatedAt: number;
 }
+
+export type Feeling = 'hard' | 'ok' | 'easy';
 
 export interface ActiveBlockState {
   setsDone: boolean[];

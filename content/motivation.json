@@ -1,0 +1,58 @@
+{
+  "sessionStart": [
+    "Le plus dur est fait : tu es là.",
+    "Aujourd'hui, on vise la régularité, pas la perfection.",
+    "Une reprise se construit séance après séance. On y va tranquille.",
+    "Pas besoin d'être fort pour commencer. Il faut commencer pour devenir fort."
+  ],
+  "rest": [
+    "Respire profondément. Tu gères.",
+    "Chaque série compte, même les plus difficiles.",
+    "Ton corps se souvient. Laisse-lui le temps.",
+    "Bois une gorgée d'eau, relâche les épaules.",
+    "Lent et propre vaut mieux que lourd et rapide.",
+    "Tu fais déjà mieux que le canapé.",
+    "La technique d'abord, la charge viendra.",
+    "Expire longuement, le cœur redescend.",
+    "C'est normal que ce soit dur : c'est comme ça qu'on progresse.",
+    "Tu reprends, tu ne recommences pas de zéro.",
+    "Les charges légères d'aujourd'hui préparent les lourdes de demain.",
+    "Concentre-toi sur la prochaine série, pas sur toute la séance."
+  ],
+  "setDone": [
+    "Une de plus !",
+    "Propre.",
+    "Bien joué.",
+    "C'est dans la boîte.",
+    "Ça avance.",
+    "Bonne série."
+  ],
+  "exerciseDone": [
+    "Exercice terminé, bravo !",
+    "Un de moins. Tu tiens le rythme.",
+    "Solide. On passe au suivant.",
+    "Coché ! Prends ton temps pour le suivant.",
+    "Beau travail, continue comme ça."
+  ],
+  "lastExercise": [
+    "Dernier exercice : on finit en beauté.",
+    "Plus qu'un. Tu y es presque."
+  ],
+  "sessionEnd": [
+    "Séance terminée. Sois fier de toi.",
+    "Une séance de plus dans la boîte. C'est comme ça qu'on avance.",
+    "Bravo ! La régularité fera le reste."
+  ],
+  "feltHard": [
+    "Dur, c'est normal en reprise : ton corps s'adapte et la prochaine sera plus facile.",
+    "Tu as fini malgré la difficulté, c'est ça qui compte."
+  ],
+  "feltOk": [
+    "Parfait, c'est le bon niveau d'effort.",
+    "Un effort maîtrisé : continue sur cette lancée."
+  ],
+  "feltEasy": [
+    "Super ! À la prochaine séance, ajoute 2,5 kg sur les exercices les plus faciles.",
+    "Tu es en forme : tu peux augmenter un peu la charge ou ton max de pompes."
+  ]
+}

@@ -147,6 +147,7 @@ export default function TrackingScreen() {
               >
                 <Row style={{ justifyContent: 'space-between' }}>
                   <T v="body" style={{ fontWeight: '700', flex: 1 }} numberOfLines={1}>
+                    {h.feeling ? `${{ hard: '😮‍💨', ok: '🙂', easy: '💪' }[h.feeling]} ` : ''}
                     {h.sessionName}
                   </T>
                   <Pill tone={validated === h.blocks.length ? 'done' : 'neutral'} text={`${validated}/${h.blocks.length} blocs`} />

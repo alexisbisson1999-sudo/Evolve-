@@ -1,16 +1,21 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { Linking, View } from 'react-native';
+import { useState } from 'react';
+import { Linking, useWindowDimensions, View } from 'react-native';
+import { Pictogram } from '../../components/Pictogram';
 import { Button, Card, formatKg, Pill, Row, Screen, T } from '../../components/ui';
 import { useProgram } from '../../hooks/useProgram';
 import { useAppStore } from '../../store/useAppStore';
-import { radius, space, usePalette } from '../../theme';
+import { space, usePalette } from '../../theme';
 
+/** Fiche exercice : d'abord le mouvement en image, le texte seulement si on le demande. */
 export default function ExerciseScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const program = useProgram();
   const c = usePalette();
+  const { width } = useWindowDimensions();
   const ex = program.exercises[id];
   const lastLoad = useAppStore((s) => s.loads[id]);
+  const [showSteps, setShowSteps] = useState(false);
 
   if (!ex) {
     return (
@@ -23,78 +28,59 @@ export default function ExerciseScreen() {
   return (
     <Screen>
       <Stack.Screen options={{ title: ex.name }} />
+      <Pictogram exerciseId={id} size={Math.min(width - space.lg * 2, 480)} />
+
       <View style={{ gap: space.sm }}>
         <T v="h1">{ex.name}</T>
         <Row style={{ flexWrap: 'wrap' }}>
           {ex.muscles.map((m) => (
             <Pill key={m} tone="accent" text={m} />
           ))}
-          {ex.equipment.map((m) => (
-            <Pill key={m} text={m} />
-          ))}
+          {ex.usesLoad && <Pill text={`Dernière charge : ${formatKg(lastLoad ?? ex.defaultLoad ?? 0)}`} />}
         </Row>
-        {ex.usesLoad && (
-          <T v="muted">
-            {ex.loadHint ?? 'Charge'} · dernière charge : {formatKg(lastLoad ?? ex.defaultLoad ?? 0)}
-          </T>
-        )}
       </View>
-
-      {/* Emplacement prévu pour les médias embarqués (images / vidéo hors ligne). */}
-      {!ex.media?.images?.length && !ex.media?.video && (
-        <View
-          style={{
-            height: 120,
-            borderRadius: radius.lg,
-            borderWidth: 1,
-            borderStyle: 'dashed',
-            borderColor: c.border,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <T v="small">Images et vidéos intégrées : bientôt disponibles</T>
-        </View>
-      )}
-
-      <Card>
-        <T v="label">Étapes</T>
-        {ex.steps.map((s, i) => (
-          <Row key={i} style={{ alignItems: 'flex-start' }} gap={space.md}>
-            <View
-              style={{
-                width: 32,
-                height: 32,
-                borderRadius: 16,
-                backgroundColor: c.accentSoft,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <T v="body" style={{ color: c.accent, fontWeight: '800' }}>
-                {i + 1}
-              </T>
-            </View>
-            <T v="body" style={{ flex: 1 }}>
-              {s}
-            </T>
-          </Row>
-        ))}
-      </Card>
 
       {ex.tips.length > 0 && (
         <Card>
-          <T v="label">Conseils</T>
-          {ex.tips.map((t, i) => (
-            <T key={i} v="body">
-              • {t}
-            </T>
+          <T v="label">À retenir</T>
+          {ex.tips.slice(0, 3).map((t, i) => (
+            <Row key={i} style={{ alignItems: 'flex-start' }} gap={space.sm}>
+              <T v="title" style={{ color: c.done }}>
+                ✓
+              </T>
+              <T v="body" style={{ flex: 1 }}>
+                {t}
+              </T>
+            </Row>
           ))}
         </Card>
       )}
 
+      <Card>
+        <T v="label">Rythme du mouvement</T>
+        <T v="body">↓ descente · ⏸︎ pause · ↑ montée (en secondes)</T>
+      </Card>
+
+      {showSteps ? (
+        <Card>
+          <T v="label">Étapes détaillées</T>
+          {ex.steps.map((s, i) => (
+            <Row key={i} style={{ alignItems: 'flex-start' }} gap={space.md}>
+              <T v="body" style={{ color: c.accent, fontWeight: '800', width: 20 }}>
+                {i + 1}
+              </T>
+              <T v="body" style={{ flex: 1 }}>
+                {s}
+              </T>
+            </Row>
+          ))}
+        </Card>
+      ) : (
+        <Button variant="secondary" title="Voir les étapes détaillées" onPress={() => setShowSteps(true)} />
+      )}
+
       {ex.links.map((l) => (
-        <Button key={l.url} variant="secondary" title={l.label} onPress={() => Linking.openURL(l.url)} />
+        <Button key={l.url} variant="ghost" title={`▶ ${l.label}`} onPress={() => Linking.openURL(l.url)} />
       ))}
 
       <T v="small">

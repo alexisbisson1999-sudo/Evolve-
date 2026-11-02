@@ -214,3 +214,18 @@ export function targetLabel(b: ResolvedBlock): string {
   if (b.duration !== undefined) return `${b.sets} × ${b.duration} s${side}`;
   return `${b.sets} × ${b.reps}${side}`;
 }
+
+/**
+ * Tempo lisible d'un coup d'œil : « 3-1-1-0 » → « ↓3s ·1s ↑1s ».
+ * (descente – pause en bas – montée – pause en haut ; les zéros sont omis)
+ */
+export function tempoShort(tempo?: string): string | null {
+  if (!tempo) return null;
+  const [down, pauseLow, up, pauseHigh] = tempo.split('-');
+  const parts: string[] = [];
+  if (down && down !== '0') parts.push(`↓${down}s`);
+  if (pauseLow && pauseLow !== '0') parts.push(`⏸\uFE0E${pauseLow}s`);
+  if (up && up !== '0') parts.push(`↑${up}s`);
+  if (pauseHigh && pauseHigh !== '0') parts.push(`⏸\uFE0E${pauseHigh}s`);
+  return parts.join('  ') || null;
+}

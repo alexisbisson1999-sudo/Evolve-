@@ -89,6 +89,11 @@ Le programme est un fichier de données, séparé du code :
 - `exercises` : nom, muscles, matériel, étapes, conseils, liens de démonstration, charge par défaut,
   et un champ `media` prévu pour les images / vidéos embarquées hors ligne.
 
+Les **pictogrammes animés** des mouvements sont décrits dans `content/poses.json`, généré par
+`node scripts/build-poses.js` (positions du squelette pour chaque étape du mouvement). La route
+`/galerie` affiche tous les mouvements pour les vérifier. Les **phrases d'encouragement** sont dans
+`content/motivation.json` (repos, série faite, exercice terminé, fin de séance, ressenti).
+
 Pour ajouter un programme : copie le fichier JSON, modifie-le, puis ajoute-le dans `content/index.ts`.
 Le contenu est vérifié au démarrage (exercice inconnu, paramètres manquants…) avec un message explicite.
 
