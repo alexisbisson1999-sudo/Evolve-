@@ -1,0 +1,584 @@
+{
+  "id": "reprise-maison-4-semaines",
+  "version": 1,
+  "name": "Reprise maison — 4 semaines",
+  "description": "Programme de reprise à la maison avec peu de matériel : une barre longue, deux barres d'haltères et 30 kg de disques. Objectif : perdre du gras progressivement et regagner du muscle.",
+  "weeks": 4,
+  "repeatLastWeek": true,
+  "equipment": ["Barre longue", "2 barres d'haltères", "30 kg de disques", "Tapis ou sol"],
+  "schedule": {
+    "rotations": {
+      "full": ["A", "B"]
+    },
+    "weekdays": {
+      "1": "rotation:full",
+      "2": "M",
+      "3": "rotation:full",
+      "4": "M",
+      "5": "rotation:full",
+      "6": "M",
+      "0": "O"
+    }
+  },
+  "warmup": {
+    "title": "Échauffement mobilité",
+    "blocks": [
+      { "exercise": "cercles-bras", "perSide": true, "sideLabel": "par sens", "params": [{ "sets": 1, "reps": 10, "rest": 0 }] },
+      { "exercise": "chat-vache", "params": [{ "sets": 1, "reps": 8, "tempo": "2-1-2-1", "rest": 0 }] },
+      { "exercise": "open-book", "perSide": true, "params": [{ "sets": 1, "reps": 6, "rest": 0 }] },
+      { "exercise": "fente-rotation", "perSide": true, "params": [{ "sets": 1, "reps": 5, "rest": 0 }] },
+      { "exercise": "squat-poids-corps", "params": [{ "sets": 1, "reps": 10, "tempo": "3-1-1-0", "rest": 0 }] }
+    ]
+  },
+  "sessions": {
+    "A": {
+      "id": "A",
+      "name": "Séance A — Corps entier",
+      "shortName": "A",
+      "kind": "force",
+      "description": "Squat, poussée, tirage, chaîne postérieure et gainage.",
+      "warmup": true,
+      "blocks": [
+        {
+          "exercise": "squat-goblet",
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "3-1-1-0", "rest": 90 },
+            { "sets": 3, "reps": 12, "tempo": "3-1-1-0", "rest": 90 },
+            { "sets": 4, "reps": 10, "tempo": "3-1-1-0", "rest": 90 },
+            { "sets": 4, "reps": 12, "tempo": "4-1-1-0", "rest": 90 }
+          ]
+        },
+        {
+          "exercise": "pompes",
+          "params": [
+            { "sets": 3, "repsPctMax": 0.5, "tempo": "2-0-1-0", "rest": 90 },
+            { "sets": 3, "repsPctMax": 0.6, "tempo": "2-0-1-0", "rest": 90 },
+            { "sets": 4, "repsPctMax": 0.6, "tempo": "3-0-1-0", "rest": 90 },
+            { "sets": 4, "repsPctMax": 0.7, "tempo": "3-0-1-0", "rest": 90 }
+          ]
+        },
+        {
+          "exercise": "rowing-barre",
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "2-0-1-1", "rest": 90 },
+            { "sets": 3, "reps": 12, "tempo": "2-0-1-1", "rest": 90 },
+            { "sets": 4, "reps": 10, "tempo": "3-0-1-1", "rest": 90 },
+            { "sets": 4, "reps": 12, "tempo": "3-0-1-1", "rest": 90 }
+          ]
+        },
+        {
+          "exercise": "souleve-roumain",
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "3-0-1-0", "rest": 90 },
+            { "sets": 3, "reps": 12, "tempo": "3-0-1-0", "rest": 90 },
+            { "sets": 4, "reps": 10, "tempo": "3-1-1-0", "rest": 90 },
+            { "sets": 4, "reps": 12, "tempo": "4-1-1-0", "rest": 90 }
+          ]
+        },
+        {
+          "exercise": "developpe-militaire-halteres",
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "2-0-1-0", "rest": 75 },
+            { "sets": 3, "reps": 12, "tempo": "2-0-1-0", "rest": 75 },
+            { "sets": 4, "reps": 10, "tempo": "3-0-1-0", "rest": 75 },
+            { "sets": 4, "reps": 12, "tempo": "3-0-1-0", "rest": 75 }
+          ]
+        },
+        {
+          "exercise": "planche",
+          "params": [
+            { "sets": 3, "duration": 30, "rest": 45 },
+            { "sets": 3, "duration": 40, "rest": 45 },
+            { "sets": 3, "duration": 45, "rest": 45 },
+            { "sets": 3, "duration": 60, "rest": 45 }
+          ]
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "name": "Séance B — Corps entier",
+      "shortName": "B",
+      "kind": "force",
+      "description": "Fentes, développé au sol, rowing unilatéral, fessiers, bras et gainage latéral.",
+      "warmup": true,
+      "blocks": [
+        {
+          "exercise": "fentes-arriere",
+          "perSide": true,
+          "params": [
+            { "sets": 3, "reps": 8, "tempo": "2-0-1-0", "rest": 90 },
+            { "sets": 3, "reps": 10, "tempo": "2-0-1-0", "rest": 90 },
+            { "sets": 4, "reps": 8, "tempo": "3-0-1-0", "rest": 90 },
+            { "sets": 4, "reps": 10, "tempo": "3-0-1-0", "rest": 90 }
+          ]
+        },
+        {
+          "exercise": "developpe-sol",
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "2-1-1-0", "rest": 90 },
+            { "sets": 3, "reps": 12, "tempo": "2-1-1-0", "rest": 90 },
+            { "sets": 4, "reps": 10, "tempo": "3-1-1-0", "rest": 90 },
+            { "sets": 4, "reps": 12, "tempo": "3-1-1-0", "rest": 90 }
+          ]
+        },
+        {
+          "exercise": "rowing-unilateral",
+          "perSide": true,
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "2-0-1-1", "rest": 75 },
+            { "sets": 3, "reps": 12, "tempo": "2-0-1-1", "rest": 75 },
+            { "sets": 4, "reps": 10, "tempo": "3-0-1-1", "rest": 75 },
+            { "sets": 4, "reps": 12, "tempo": "3-0-1-1", "rest": 75 }
+          ]
+        },
+        {
+          "exercise": "hip-thrust",
+          "params": [
+            { "sets": 3, "reps": 12, "tempo": "2-0-1-2", "rest": 75 },
+            { "sets": 3, "reps": 15, "tempo": "2-0-1-2", "rest": 75 },
+            { "sets": 4, "reps": 12, "tempo": "2-0-1-2", "rest": 75 },
+            { "sets": 4, "reps": 15, "tempo": "3-0-1-2", "rest": 75 }
+          ]
+        },
+        {
+          "exercise": "curl-barre",
+          "params": [
+            { "sets": 3, "reps": 10, "tempo": "2-0-1-0", "rest": 60 },
+            { "sets": 3, "reps": 12, "tempo": "2-0-1-0", "rest": 60 },
+            { "sets": 3, "reps": 12, "tempo": "3-0-1-0", "rest": 60 },
+            { "sets": 4, "reps": 12, "tempo": "3-0-1-0", "rest": 60 }
+          ]
+        },
+        {
+          "exercise": "gainage-lateral",
+          "perSide": true,
+          "params": [
+            { "sets": 2, "duration": 20, "rest": 45 },
+            { "sets": 3, "duration": 25, "rest": 45 },
+            { "sets": 3, "duration": 30, "rest": 45 },
+            { "sets": 3, "duration": 40, "rest": 45 }
+          ]
+        }
+      ]
+    },
+    "M": {
+      "id": "M",
+      "name": "Mini-bloc pompes & abdos",
+      "shortName": "M",
+      "kind": "mini",
+      "description": "10 minutes : pompes, abdos et gainage pour garder le rythme les jours sans séance complète.",
+      "warmup": true,
+      "blocks": [
+        {
+          "exercise": "pompes",
+          "params": [
+            { "sets": 3, "repsPctMax": 0.4, "tempo": "2-0-1-0", "rest": 60 },
+            { "sets": 3, "repsPctMax": 0.5, "tempo": "2-0-1-0", "rest": 60 },
+            { "sets": 3, "repsPctMax": 0.5, "tempo": "3-0-1-0", "rest": 60 },
+            { "sets": 3, "repsPctMax": 0.6, "tempo": "3-0-1-0", "rest": 60 }
+          ]
+        },
+        {
+          "exercise": "crunch",
+          "params": [
+            { "sets": 2, "reps": 15, "tempo": "2-1-1-0", "rest": 45 },
+            { "sets": 3, "reps": 15, "tempo": "2-1-1-0", "rest": 45 },
+            { "sets": 3, "reps": 18, "tempo": "2-1-1-0", "rest": 45 },
+            { "sets": 3, "reps": 20, "tempo": "2-1-1-0", "rest": 45 }
+          ]
+        },
+        {
+          "exercise": "dead-bug",
+          "perSide": true,
+          "params": [
+            { "sets": 2, "reps": 6, "tempo": "2-1-2-0", "rest": 45 },
+            { "sets": 2, "reps": 8, "tempo": "2-1-2-0", "rest": 45 },
+            { "sets": 2, "reps": 10, "tempo": "2-1-2-0", "rest": 45 },
+            { "sets": 3, "reps": 10, "tempo": "2-1-2-0", "rest": 45 }
+          ]
+        }
+      ]
+    },
+    "O": {
+      "id": "O",
+      "name": "Mobilité complète",
+      "shortName": "O",
+      "kind": "mobilite",
+      "description": "Séance de récupération : hanches, dos, épaules. Respire lentement et ne force jamais dans la douleur.",
+      "warmup": true,
+      "blocks": [
+        { "exercise": "etirement-flechisseurs", "perSide": true, "params": [{ "sets": 2, "duration": 30, "rest": 0 }, { "sets": 2, "duration": 40, "rest": 0 }, { "sets": 2, "duration": 45, "rest": 0 }, { "sets": 2, "duration": 60, "rest": 0 }] },
+        { "exercise": "pigeon", "perSide": true, "params": [{ "sets": 2, "duration": 30, "rest": 0 }, { "sets": 2, "duration": 40, "rest": 0 }, { "sets": 2, "duration": 45, "rest": 0 }, { "sets": 2, "duration": 60, "rest": 0 }] },
+        { "exercise": "hanches-90-90", "perSide": true, "params": [{ "sets": 2, "reps": 5, "tempo": "3-1-3-0", "rest": 0 }, { "sets": 2, "reps": 6, "tempo": "3-1-3-0", "rest": 0 }, { "sets": 2, "reps": 8, "tempo": "3-1-3-0", "rest": 0 }, { "sets": 2, "reps": 8, "tempo": "3-2-3-0", "rest": 0 }] },
+        { "exercise": "ischios-sol", "perSide": true, "params": [{ "sets": 2, "duration": 30, "rest": 0 }, { "sets": 2, "duration": 40, "rest": 0 }, { "sets": 2, "duration": 45, "rest": 0 }, { "sets": 2, "duration": 60, "rest": 0 }] },
+        { "exercise": "squat-profond-tenu", "params": [{ "sets": 3, "duration": 30, "rest": 0 }, { "sets": 3, "duration": 40, "rest": 0 }, { "sets": 3, "duration": 45, "rest": 0 }, { "sets": 3, "duration": 60, "rest": 0 }] },
+        { "exercise": "etirement-pectoraux-mur", "perSide": true, "params": [{ "sets": 2, "duration": 30, "rest": 0 }, { "sets": 2, "duration": 30, "rest": 0 }, { "sets": 2, "duration": 40, "rest": 0 }, { "sets": 2, "duration": 45, "rest": 0 }] },
+        { "exercise": "posture-enfant", "params": [{ "sets": 2, "duration": 45, "rest": 0 }, { "sets": 2, "duration": 60, "rest": 0 }, { "sets": 2, "duration": 60, "rest": 0 }, { "sets": 2, "duration": 75, "rest": 0 }] }
+      ]
+    }
+  },
+  "exercises": {
+    "cercles-bras": {
+      "name": "Cercles de bras",
+      "muscles": ["Épaules"],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Debout, pieds largeur de hanches, bras tendus sur les côtés.",
+        "Fais de grands cercles lents vers l'avant, en partant petit puis en agrandissant.",
+        "Répète dans l'autre sens."
+      ],
+      "tips": ["Garde les épaules basses, loin des oreilles.", "Le mouvement doit rester fluide et sans douleur."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=cercles+de+bras+%C3%A9chauffement+%C3%A9paules" }]
+    },
+    "chat-vache": {
+      "name": "Chat-vache",
+      "muscles": ["Colonne vertébrale", "Dos"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "À quatre pattes, mains sous les épaules, genoux sous les hanches.",
+        "Inspire en creusant le dos, regard vers l'avant (vache).",
+        "Expire en arrondissant le dos vers le plafond, menton vers la poitrine (chat)."
+      ],
+      "tips": ["Bouge vertèbre par vertèbre.", "Synchronise le mouvement avec ta respiration."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=chat+vache+mobilit%C3%A9+dos" }]
+    },
+    "open-book": {
+      "name": "Rotation thoracique au sol (open book)",
+      "muscles": ["Haut du dos", "Pectoraux"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Allongé sur le côté, genoux pliés à 90°, bras tendus devant toi, paumes l'une contre l'autre.",
+        "Ouvre le bras du dessus comme un livre en suivant ta main du regard.",
+        "Laisse l'épaule descendre vers le sol de l'autre côté, puis reviens lentement."
+      ],
+      "tips": ["Les genoux restent collés l'un à l'autre.", "Expire pendant l'ouverture."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=open+book+rotation+thoracique" }]
+    },
+    "fente-rotation": {
+      "name": "Fente avec rotation",
+      "muscles": ["Hanches", "Ischios", "Haut du dos"],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Fais un grand pas en avant en fente basse, mains au sol à l'intérieur du pied avant.",
+        "Descends le coude du côté du pied avant vers la cheville.",
+        "Ouvre ensuite ce bras vers le plafond en tournant le buste, puis reviens et change de côté."
+      ],
+      "tips": ["Garde la jambe arrière active et tendue.", "Va doucement : c'est un échauffement, pas un étirement forcé."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=world%27s+greatest+stretch+fente+rotation" }]
+    },
+    "squat-poids-corps": {
+      "name": "Squat au poids du corps",
+      "muscles": ["Cuisses", "Fessiers"],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Pieds un peu plus larges que les hanches, pointes légèrement ouvertes.",
+        "Descends en poussant les hanches vers l'arrière et en ouvrant les genoux.",
+        "Remonte en poussant dans tout le pied."
+      ],
+      "tips": ["Garde le dos droit et la poitrine ouverte.", "Descends aussi bas que ta mobilité le permet sans arrondir le bas du dos."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=squat+poids+du+corps+technique" }]
+    },
+    "squat-goblet": {
+      "name": "Squat goblet",
+      "muscles": ["Quadriceps", "Fessiers", "Gainage"],
+      "equipment": ["1 haltère"],
+      "usesLoad": true,
+      "defaultLoad": 12,
+      "loadHint": "Charge de l'haltère tenu contre la poitrine",
+      "steps": [
+        "Tiens un haltère verticalement contre la poitrine, coudes vers le bas.",
+        "Pieds un peu plus larges que les hanches, pointes légèrement ouvertes.",
+        "Descends lentement en gardant le buste droit, coudes entre les genoux.",
+        "Remonte en poussant dans le sol, sans verrouiller brutalement les genoux."
+      ],
+      "tips": ["Les genoux suivent la direction des pieds.", "Respecte la descente lente indiquée par le tempo.", "Si les talons décollent, réduis l'amplitude ou écarte un peu plus les pieds."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=squat+goblet+halt%C3%A8re+technique" }]
+    },
+    "pompes": {
+      "name": "Pompes",
+      "muscles": ["Pectoraux", "Triceps", "Épaules", "Gainage"],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Mains un peu plus larges que les épaules, corps aligné de la tête aux talons.",
+        "Descends la poitrine vers le sol, coudes à environ 45° du corps.",
+        "Pousse le sol pour remonter en gardant le gainage."
+      ],
+      "tips": ["Les répétitions sont calculées en % de ton max de pompes (réglable dans Réglages).", "Si la fin est trop dure, passe en appui sur les genoux plutôt que de casser la position.", "Ne laisse pas les hanches s'affaisser."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=pompes+technique+d%C3%A9butant" }]
+    },
+    "rowing-barre": {
+      "name": "Rowing barre buste penché",
+      "muscles": ["Dos", "Biceps", "Arrière d'épaules"],
+      "equipment": ["Barre longue", "Disques"],
+      "usesLoad": true,
+      "defaultLoad": 20,
+      "loadHint": "Charge totale barre + disques",
+      "steps": [
+        "Barre en main, prise en pronation un peu plus large que les épaules.",
+        "Genoux légèrement fléchis, penche le buste vers l'avant (environ 45°) en gardant le dos plat.",
+        "Tire la barre vers le bas du ventre en serrant les omoplates.",
+        "Marque une pause en haut puis redescends en contrôlant."
+      ],
+      "tips": ["Le dos reste plat du début à la fin : si ça s'arrondit, baisse la charge.", "Ne donne pas d'élan avec le buste."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=rowing+barre+buste+pench%C3%A9+technique" }]
+    },
+    "souleve-roumain": {
+      "name": "Soulevé de terre roumain",
+      "muscles": ["Ischios", "Fessiers", "Bas du dos"],
+      "equipment": ["Barre longue", "Disques"],
+      "usesLoad": true,
+      "defaultLoad": 25,
+      "loadHint": "Charge totale barre + disques",
+      "steps": [
+        "Debout, barre en main devant les cuisses, pieds largeur de hanches.",
+        "Genoux légèrement fléchis et fixes, pousse les hanches vers l'arrière.",
+        "Fais glisser la barre le long des cuisses jusqu'à sentir l'étirement des ischios (souvent sous les genoux).",
+        "Remonte en serrant les fessiers et en ramenant les hanches vers l'avant."
+      ],
+      "tips": ["La barre reste collée aux jambes.", "Dos neutre : on cherche une charnière de hanche, pas une flexion du dos.", "Ne descends pas plus bas que ce que ta souplesse permet en gardant le dos plat."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=soulev%C3%A9+de+terre+roumain+technique" }]
+    },
+    "developpe-militaire-halteres": {
+      "name": "Développé militaire haltères",
+      "muscles": ["Épaules", "Triceps"],
+      "equipment": ["2 haltères"],
+      "usesLoad": true,
+      "defaultLoad": 7.5,
+      "loadHint": "Charge par haltère",
+      "steps": [
+        "Debout (ou assis dos droit), haltères à hauteur d'épaules, paumes vers l'avant.",
+        "Pousse les haltères au-dessus de la tête sans cambrer le bas du dos.",
+        "Redescends en contrôlant jusqu'aux épaules."
+      ],
+      "tips": ["Serre les fessiers et les abdos pour protéger le bas du dos.", "Ne verrouille pas brutalement les coudes en haut."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=d%C3%A9velopp%C3%A9+militaire+halt%C3%A8res+technique" }]
+    },
+    "planche": {
+      "name": "Gainage planche",
+      "muscles": ["Abdominaux", "Gainage"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "En appui sur les avant-bras et la pointe des pieds, coudes sous les épaules.",
+        "Aligne tête, dos et bassin, rentre légèrement le nombril.",
+        "Tiens la position en respirant calmement."
+      ],
+      "tips": ["Serre les fessiers pour éviter de creuser le bas du dos.", "Mieux vaut 20 s parfaites que 60 s mal alignées."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=gainage+planche+technique" }]
+    },
+    "fentes-arriere": {
+      "name": "Fentes arrière haltères",
+      "muscles": ["Quadriceps", "Fessiers"],
+      "equipment": ["2 haltères"],
+      "usesLoad": true,
+      "defaultLoad": 7.5,
+      "loadHint": "Charge par haltère",
+      "steps": [
+        "Debout, un haltère dans chaque main, bras le long du corps.",
+        "Fais un pas en arrière et descends jusqu'à ce que le genou arrière frôle le sol.",
+        "Pousse dans le talon avant pour revenir debout. Enchaîne toutes les répétitions d'un côté puis change."
+      ],
+      "tips": ["Le buste reste droit.", "Le genou avant reste aligné avec le pied."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=fentes+arri%C3%A8re+halt%C3%A8res+technique" }]
+    },
+    "developpe-sol": {
+      "name": "Développé au sol (floor press)",
+      "muscles": ["Pectoraux", "Triceps", "Épaules"],
+      "equipment": ["Barre longue", "Disques"],
+      "usesLoad": true,
+      "defaultLoad": 20,
+      "loadHint": "Charge totale barre + disques",
+      "steps": [
+        "Allongé sur le dos au sol, genoux pliés, barre au-dessus de la poitrine bras tendus.",
+        "Descends la barre vers le bas des pectoraux jusqu'à ce que les bras touchent le sol.",
+        "Marque un temps d'arrêt, puis pousse la barre vers le haut."
+      ],
+      "tips": ["Coudes à environ 45° du corps.", "Ne rebondis pas avec les coudes sur le sol.", "Pour charger la barre seul, roule-la jusqu'aux hanches depuis la position assise."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=floor+press+barre+d%C3%A9velopp%C3%A9+au+sol" }]
+    },
+    "rowing-unilateral": {
+      "name": "Rowing unilatéral haltère",
+      "muscles": ["Dos", "Biceps"],
+      "equipment": ["1 haltère", "Appui (chaise, canapé)"],
+      "usesLoad": true,
+      "defaultLoad": 12,
+      "loadHint": "Charge de l'haltère",
+      "steps": [
+        "Une main et un genou en appui sur une chaise ou un canapé, dos plat.",
+        "Haltère dans l'autre main, bras tendu vers le sol.",
+        "Tire l'haltère vers la hanche en gardant le coude près du corps.",
+        "Redescends lentement. Fais toutes les répétitions puis change de côté."
+      ],
+      "tips": ["Pense « coude vers la hanche » plutôt que « main vers l'épaule ».", "Ne tourne pas le buste pour aider."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=rowing+unilat%C3%A9ral+halt%C3%A8re+technique" }]
+    },
+    "hip-thrust": {
+      "name": "Hip thrust / pont fessier à la barre",
+      "muscles": ["Fessiers", "Ischios"],
+      "equipment": ["Barre longue", "Disques", "Appui (canapé)"],
+      "usesLoad": true,
+      "defaultLoad": 30,
+      "loadHint": "Charge totale barre + disques",
+      "steps": [
+        "Haut du dos contre le bord d'un canapé (ou au sol pour un pont fessier), barre sur les hanches.",
+        "Pieds à plat, largeur de hanches, genoux pliés.",
+        "Monte les hanches jusqu'à aligner épaules, hanches et genoux, en serrant fort les fessiers.",
+        "Tiens 2 secondes en haut puis redescends."
+      ],
+      "tips": ["Protège tes hanches avec une serviette roulée autour de la barre.", "Menton rentré, regard vers les genoux en haut du mouvement.", "Ne cambre pas le bas du dos : ce sont les fessiers qui travaillent."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=hip+thrust+barre+maison+technique" }]
+    },
+    "curl-barre": {
+      "name": "Curl biceps (barre ou haltères)",
+      "muscles": ["Biceps", "Avant-bras"],
+      "equipment": ["Barre longue ou 2 haltères"],
+      "usesLoad": true,
+      "defaultLoad": 15,
+      "loadHint": "Charge totale (barre) ou par haltère",
+      "steps": [
+        "Debout, barre en main en supination, bras tendus.",
+        "Fléchis les coudes pour monter la barre vers les épaules.",
+        "Redescends lentement jusqu'à bras tendus."
+      ],
+      "tips": ["Les coudes restent collés au corps.", "Pas d'élan avec le dos."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=curl+biceps+barre+technique" }]
+    },
+    "gainage-lateral": {
+      "name": "Gainage latéral",
+      "muscles": ["Obliques", "Gainage"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Allongé sur le côté, en appui sur l'avant-bras, coude sous l'épaule.",
+        "Décolle les hanches pour aligner tête, bassin et pieds.",
+        "Tiens la position, puis change de côté."
+      ],
+      "tips": ["Version plus facile : genoux pliés au sol.", "Ne laisse pas la hanche descendre."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=gainage+lat%C3%A9ral+technique" }]
+    },
+    "crunch": {
+      "name": "Crunch",
+      "muscles": ["Abdominaux"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Allongé sur le dos, genoux pliés, pieds au sol, mains aux tempes.",
+        "Enroule le haut du dos en rapprochant les côtes du bassin.",
+        "Marque une pause, puis redescends lentement."
+      ],
+      "tips": ["Ne tire pas sur la nuque.", "Expire en montant."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=crunch+abdos+technique" }]
+    },
+    "dead-bug": {
+      "name": "Dead bug",
+      "muscles": ["Abdominaux profonds", "Gainage"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Allongé sur le dos, bras tendus vers le plafond, hanches et genoux à 90°.",
+        "Plaque le bas du dos au sol.",
+        "Allonge lentement un bras et la jambe opposée sans décoller le bas du dos, puis reviens et alterne."
+      ],
+      "tips": ["Expire longuement pendant l'extension.", "Réduis l'amplitude si le dos se creuse."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=dead+bug+exercice+technique" }]
+    },
+    "etirement-flechisseurs": {
+      "name": "Étirement des fléchisseurs de hanche",
+      "muscles": ["Psoas", "Quadriceps"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Un genou au sol, l'autre pied devant (position de chevalier servant).",
+        "Serre le fessier de la jambe arrière et bascule légèrement le bassin vers l'arrière.",
+        "Avance doucement les hanches jusqu'à sentir l'étirement devant la hanche arrière."
+      ],
+      "tips": ["Garde le buste droit.", "Mets un coussin sous le genou si besoin."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+psoas+fl%C3%A9chisseurs+de+hanche" }]
+    },
+    "pigeon": {
+      "name": "Posture du pigeon",
+      "muscles": ["Fessiers", "Rotateurs de hanche"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Depuis la position à quatre pattes, amène un genou derrière le poignet du même côté.",
+        "Allonge l'autre jambe vers l'arrière.",
+        "Descends le buste vers l'avant selon ta souplesse et respire."
+      ],
+      "tips": ["Version plus douce : sur le dos, cheville sur le genou opposé (figure 4).", "Aucune douleur au genou : si c'est le cas, passe à la version douce."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=posture+du+pigeon+%C3%A9tirement+hanche" }]
+    },
+    "hanches-90-90": {
+      "name": "Rotations de hanches 90/90",
+      "muscles": ["Hanches"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "Assis au sol, une jambe devant pliée à 90°, l'autre sur le côté pliée à 90°.",
+        "Sans les mains si possible, bascule les deux genoux de l'autre côté.",
+        "Alterne lentement en gardant le buste droit."
+      ],
+      "tips": ["Aide-toi des mains au sol au début.", "Le mouvement doit être lent et contrôlé."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=90+90+hip+mobility+rotation+hanches" }]
+    },
+    "ischios-sol": {
+      "name": "Étirement des ischios au sol",
+      "muscles": ["Ischios", "Mollets"],
+      "equipment": ["Tapis", "Serviette ou sangle"],
+      "usesLoad": false,
+      "steps": [
+        "Allongé sur le dos, passe une serviette sous un pied.",
+        "Monte la jambe tendue vers le plafond en tirant doucement sur la serviette.",
+        "L'autre jambe reste allongée au sol."
+      ],
+      "tips": ["Le bassin reste au sol.", "Cherche une tension modérée, jamais une douleur."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+ischio+jambiers+allong%C3%A9+serviette" }]
+    },
+    "squat-profond-tenu": {
+      "name": "Squat profond tenu",
+      "muscles": ["Hanches", "Chevilles", "Bas du dos"],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Descends en squat le plus bas possible, talons au sol.",
+        "Coudes à l'intérieur des genoux, mains jointes.",
+        "Pousse doucement les genoux vers l'extérieur avec les coudes et respire."
+      ],
+      "tips": ["Tiens-toi à un montant de porte si l'équilibre est difficile.", "Une cale sous les talons est autorisée au début."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=deep+squat+hold+mobilit%C3%A9" }]
+    },
+    "etirement-pectoraux-mur": {
+      "name": "Étirement des pectoraux au mur",
+      "muscles": ["Pectoraux", "Épaules"],
+      "equipment": ["Mur ou encadrement de porte"],
+      "usesLoad": false,
+      "steps": [
+        "Avant-bras contre un mur ou un encadrement de porte, coude à hauteur d'épaule.",
+        "Tourne doucement le buste dans la direction opposée.",
+        "Tiens en respirant, puis change de côté."
+      ],
+      "tips": ["Garde l'épaule basse.", "Arrête si tu ressens des fourmillements dans le bras."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+pectoraux+mur" }]
+    },
+    "posture-enfant": {
+      "name": "Posture de l'enfant",
+      "muscles": ["Dos", "Épaules", "Hanches"],
+      "equipment": ["Tapis"],
+      "usesLoad": false,
+      "steps": [
+        "À genoux, gros orteils qui se touchent, genoux écartés.",
+        "Assieds-toi sur les talons et allonge les bras loin devant toi.",
+        "Relâche le front au sol et respire lentement dans le dos."
+      ],
+      "tips": ["Place un coussin sous les fesses si les genoux sont sensibles."],
+      "links": [{ "label": "Démonstrations (YouTube)", "url": "https://www.youtube.com/results?search_query=posture+de+l%27enfant+%C3%A9tirement" }]
+    }
+  }
+}
