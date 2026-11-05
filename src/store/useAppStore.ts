@@ -278,7 +278,8 @@ export const useAppStore = create<State & Actions>()(
       resetAll: () => set({ ...initialData(), dirtyAt: Date.now() }),
     }),
     {
-      name: 'evolve-store',
+      // Une clé par édition : deux apps hébergées sur le même domaine ne se mélangent pas.
+      name: DEFAULT_PROGRAM_ID === 'reprise-maison-4-semaines' ? 'evolve-store' : `evolve-store-${DEFAULT_PROGRAM_ID}`,
       version: 1,
       storage: createJSONStorage(() => AsyncStorage),
       partialize: ({ settings, settingsUpdatedAt, loads, restOverrides, prefsUpdatedAt, history, measurements, deleted, active, lastSyncAt, dirtyAt }) => ({

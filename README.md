@@ -69,6 +69,17 @@ node scripts/build-web-artifact.js <dossier-export> evolve.html
 Donne une page HTML autonome (JS, police d'icônes, son et images intégrés) qui s'ouvre dans un
 navigateur. Pas de notifications ni de vibration sur le web ; les données restent dans le navigateur.
 
+## Site web gratuit (GitHub Pages)
+
+Le workflow `.github/workflows/pages.yml` construit et publie automatiquement, à chaque mise à jour
+de la branche, `https://alexisbisson1999-sudo.github.io/Evolve-/` :
+
+- `/evolve/` : Evolve (programme « Reprise maison »)
+- `/douceur/` : Evolve Douceur (programme « Remise en forme en douceur »)
+
+À activer une seule fois : **Settings → Pages → Build and deployment → Source : GitHub Actions**.
+En local : `node scripts/build-pages.js` génère le site dans `site/`.
+
 ## Synchro entre appareils (facultatif)
 
 Sans configuration, l'app est 100 % hors ligne : les données restent sur le téléphone (avec export JSON
