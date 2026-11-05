@@ -5,7 +5,7 @@ import { programWeek, resolveSession } from '../../domain/program';
 import type { Weekday } from '../../domain/types';
 import { useProgram, useResolveOptions, useToday } from '../../hooks/useProgram';
 import { useAppStore } from '../../store/useAppStore';
-import { radius, space, usePalette } from '../../theme';
+import { space, usePalette } from '../../theme';
 
 const DAY_NAMES: Record<Weekday, string> = {
   '1': 'lun', '2': 'mar', '3': 'mer', '4': 'jeu', '5': 'ven', '6': 'sam', '0': 'dim',
@@ -55,15 +55,15 @@ export default function SessionsScreen() {
               <Row style={{ alignItems: 'flex-start' }} gap={space.md}>
                 <View
                   style={{
-                    width: 52,
-                    height: 52,
-                    borderRadius: radius.md,
-                    backgroundColor: c.accentSoft,
+                    width: 56,
+                    height: 56,
+                    borderRadius: 28,
+                    backgroundColor: c.tiles[s.kind],
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <T v="title" style={{ color: c.accent }}>
+                  <T v="title" style={{ color: c.text }}>
                     {s.shortName}
                   </T>
                 </View>

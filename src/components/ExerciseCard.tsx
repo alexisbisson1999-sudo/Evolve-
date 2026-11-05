@@ -1,10 +1,10 @@
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { clampRest, durationLabel, targetLabel, tempoShort } from '../domain/program';
 import type { ActiveBlockState, ResolvedBlock } from '../domain/types';
 import { tap } from '../services/feedback';
 import { radius, space, usePalette } from '../theme';
 import { Pictogram } from './Pictogram';
-import { Button, Card, formatKg, IconButton, Row, Stepper, T } from './ui';
+import { Button, Card, formatKg, IconButton, Row, Stepper, T, Text } from './ui';
 
 /** Gros rond de série à cocher. */
 function SetDot({

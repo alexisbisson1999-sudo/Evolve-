@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { showDialog } from '../../components/Dialog';
+import { sendReportToCoach } from '../../services/share';
 import { LineChart } from '../../components/LineChart';
 import { Button, Card, Field, Pill, Row, Screen, Segmented, T, formatKg, parseNumber } from '../../components/ui';
 import { formatDuration, formatLongWithYear, formatShort, todayISO } from '../../domain/dates';
@@ -50,11 +51,25 @@ export default function TrackingScreen() {
 
   return (
     <Screen>
+      {/* Bilan pour le coach */}
+      <Card>
+        <Row gap={space.md}>
+          <T v="title" style={{ fontSize: 28 }}>
+            💬
+          </T>
+          <View style={{ flex: 1 }}>
+            <T v="title">Mon bilan de la semaine</T>
+            <T v="small">Séances, ressentis, commentaires et poids des 7 derniers jours.</T>
+          </View>
+        </Row>
+        <Button title="Envoyer à mon coach" onPress={sendReportToCoach} />
+      </Card>
+
       {/* Saisie */}
       <Card>
         <T v="title">Mesure du jour</T>
         <Row gap={space.md}>
-          <Field label="Poids (kg)" value={weight} onChangeText={setWeight} keyboardType="decimal-pad" placeholder={lastW ? fmt1(lastW) : '89,5'} />
+          <Field label="Poids (kg)" value={weight} onChangeText={setWeight} keyboardType="decimal-pad" placeholder={lastW ? fmt1(lastW) : '—'} />
           <Field label="Tour de taille (cm)" value={waist} onChangeText={setWaist} keyboardType="decimal-pad" placeholder="—" />
         </Row>
         <Button title="Enregistrer" onPress={save} disabled={!weight.trim() && !waist.trim()} />

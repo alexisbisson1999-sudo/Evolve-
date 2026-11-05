@@ -1,6 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router/js-tabs';
 import type { ColorValue } from 'react-native';
+import { FONTS } from '../../components/ui';
 import { usePalette } from '../../theme';
 
 type IconName = keyof typeof Ionicons.glyphMap;
@@ -18,14 +19,19 @@ export default function TabsLayout() {
       screenOptions={{
         tabBarActiveTintColor: c.accent,
         tabBarInactiveTintColor: c.textFaint,
-        tabBarStyle: { backgroundColor: c.surface, borderTopColor: c.border, minHeight: 64 },
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '600' },
+        tabBarStyle: {
+          backgroundColor: c.surface,
+          borderTopWidth: 0,
+          minHeight: 66,
+          boxShadow: c.scheme === 'light' ? '0 -4px 18px rgba(28, 45, 60, 0.06)' : undefined,
+        },
+        tabBarLabelStyle: { fontSize: 12, fontFamily: FONTS.bold },
         headerStyle: { backgroundColor: c.bg },
-        headerTitleStyle: { color: c.text, fontWeight: '800' },
+        headerTitleStyle: { color: c.text, fontFamily: FONTS.heavy, fontSize: 20 },
         headerShadowVisible: false,
       }}
     >
-      <Tabs.Screen name="index" options={{ title: "Aujourd'hui", tabBarIcon: icon('today-outline') }} />
+      <Tabs.Screen name="index" options={{ title: "Aujourd'hui", headerTitle: '', tabBarIcon: icon('today-outline') }} />
       <Tabs.Screen name="seances" options={{ title: 'Séances', tabBarIcon: icon('barbell-outline') }} />
       <Tabs.Screen name="suivi" options={{ title: 'Suivi', tabBarIcon: icon('stats-chart-outline') }} />
       <Tabs.Screen name="reglages" options={{ title: 'Réglages', tabBarIcon: icon('settings-outline') }} />

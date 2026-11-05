@@ -18,6 +18,8 @@ export interface Palette {
   doneSoft: string;
   danger: string;
   grid: string;
+  /** Fonds pastel des cartes de séance, par type de séance. */
+  tiles: Record<'force' | 'mini' | 'mobilite', string>;
 }
 
 const light: Palette = {
@@ -36,6 +38,7 @@ const light: Palette = {
   doneSoft: '#DDF3E6',
   danger: '#C62828',
   grid: '#E3E6EA',
+  tiles: { force: '#E6EEFF', mini: '#FFF0DE', mobilite: '#EEE9FC' },
 };
 
 const dark: Palette = {
@@ -54,6 +57,7 @@ const dark: Palette = {
   doneSoft: '#16301F',
   danger: '#FF6B6B',
   grid: '#262B33',
+  tiles: { force: '#1A2540', mini: '#33281A', mobilite: '#262038' },
 };
 
 /** « Douceur » : clair et apaisant, contrastes francs, accent vert d'eau. */
@@ -73,6 +77,7 @@ const douceurLight: Palette = {
   doneSoft: '#DFF1E3',
   danger: '#B93C12',
   grid: '#E2EBE8',
+  tiles: { force: '#DDF1EC', mini: '#FFF1DB', mobilite: '#ECE8FA' },
 };
 
 const douceurDark: Palette = {
@@ -91,6 +96,7 @@ const douceurDark: Palette = {
   doneSoft: '#163322',
   danger: '#FF8A65',
   grid: '#24312E',
+  tiles: { force: '#173530', mini: '#33291A', mobilite: '#262139' },
 };
 
 const THEMES: Record<string, { light: Palette; dark: Palette }> = {
@@ -113,7 +119,7 @@ export const font = {
   small: 14,
   body: 16,
   title: 20,
-  h1: 28,
+  h1: 30,
   big: 40,
   huge: 64,
 };

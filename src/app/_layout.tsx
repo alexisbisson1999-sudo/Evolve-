@@ -1,9 +1,17 @@
+// Import graisse par graisse : seules ces 5 polices sont embarquées dans l'app.
+import { Nunito_400Regular } from '@expo-google-fonts/nunito/400Regular';
+import { Nunito_600SemiBold } from '@expo-google-fonts/nunito/600SemiBold';
+import { Nunito_700Bold } from '@expo-google-fonts/nunito/700Bold';
+import { Nunito_800ExtraBold } from '@expo-google-fonts/nunito/800ExtraBold';
+import { Nunito_900Black } from '@expo-google-fonts/nunito/900Black';
+import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo } from 'react';
 import { ActivityIndicator, AppState, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DialogHost } from '../components/Dialog';
+import { FONTS } from '../components/ui';
 import { rescheduleReminders } from '../services/notifications';
 import { getSession, syncConfigured, syncNow } from '../services/sync';
 import { useAppStore, useHydrated } from '../store/useAppStore';
@@ -55,6 +63,8 @@ function useBackgroundServices(hydrated: boolean) {
 export default function RootLayout() {
   const c = usePalette();
   const hydrated = useHydrated();
+  const [fontsLoaded, fontError] = useFonts({ Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold, Nunito_900Black });
+  const ready = hydrated && (fontsLoaded || !!fontError);
   useBackgroundServices(hydrated);
 
   const navTheme = useMemo(() => {
@@ -76,12 +86,21 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ThemeProvider value={navTheme}>
         <StatusBar style={c.scheme === 'dark' ? 'light' : 'dark'} />
-        {!hydrated ? (
+        {!ready ? (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: c.bg }}>
             <ActivityIndicator color={c.accent} />
           </View>
         ) : (
-          <Stack screenOptions={{ headerBackTitle: 'Retour', contentStyle: { backgroundColor: c.bg } }}>
+          <Stack
+            screenOptions={{
+              headerBackTitle: 'Retour',
+              contentStyle: { backgroundColor: c.bg },
+              headerStyle: { backgroundColor: c.bg },
+              headerShadowVisible: false,
+              headerTitleStyle: { fontFamily: FONTS.heavy, color: c.text },
+              headerTintColor: c.accent,
+            }}
+          >
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="seance/index" options={{ title: 'Séance', gestureEnabled: false }} />
             <Stack.Screen name="apercu/[id]" options={{ title: 'Aperçu' }} />

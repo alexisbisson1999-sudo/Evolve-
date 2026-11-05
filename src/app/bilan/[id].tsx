@@ -1,11 +1,12 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 import { getProgram, pickMotivation } from '../../../content';
-import { Button, Card, formatKg, Row, Screen, T } from '../../components/ui';
+import { Button, Card, FONTS, formatKg, Row, Screen, T, Text } from '../../components/ui';
 import { formatDuration } from '../../domain/dates';
 import { computeAdjustments, type Adjustment } from '../../domain/progression';
 import type { Feeling } from '../../domain/types';
+import { sendReportToCoach } from '../../services/share';
 import { useAppStore } from '../../store/useAppStore';
 import { radius, space, usePalette } from '../../theme';
 
@@ -224,11 +225,21 @@ export default function SummaryScreen() {
             color: c.text,
             padding: space.md,
             fontSize: 17,
+            fontFamily: FONTS.medium,
             textAlignVertical: 'top',
           }}
         />
         <T v="small">Facultatif. Tu le retrouves dans Suivi › Historique des séances.</T>
       </Card>
+
+      <Button
+        variant="secondary"
+        title="💬 Envoyer mon bilan à mon coach"
+        onPress={() => {
+          setComment(log.id, note);
+          sendReportToCoach();
+        }}
+      />
     </Screen>
   );
 }

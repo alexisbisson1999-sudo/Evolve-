@@ -1,4 +1,4 @@
-import { Modal, Pressable, View } from 'react-native';
+import { Modal, Pressable, ScrollView, View } from 'react-native';
 import { create } from 'zustand';
 import { radius, space, usePalette } from '../theme';
 import { Button, T } from './ui';
@@ -54,7 +54,13 @@ export function DialogHost() {
           accessibilityRole="alert"
         >
           <T v="title">{current.title}</T>
-          {current.message ? <T v="muted">{current.message}</T> : null}
+          {current.message ? (
+            <ScrollView style={{ maxHeight: 360 }}>
+              <T v="muted" selectable>
+                {current.message}
+              </T>
+            </ScrollView>
+          ) : null}
           <View style={{ gap: space.sm, marginTop: space.sm }}>
             {current.buttons.map((b) => (
               <Button

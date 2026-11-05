@@ -5,7 +5,7 @@ import { formatShort, parseISODate } from '../domain/dates';
 import { usePalette } from '../theme';
 import { T } from './ui';
 
-const FONT = Platform.OS === 'web' ? 'system-ui, sans-serif' : undefined;
+const FONT = Platform.OS === 'web' ? 'Nunito_700Bold, system-ui, sans-serif' : 'Nunito_700Bold';
 
 export interface Point {
   date: string;
