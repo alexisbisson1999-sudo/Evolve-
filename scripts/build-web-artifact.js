@@ -36,9 +36,9 @@ js = js.replace(/<\/script/gi, '<\\/script');
 const page = `<title>${title}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
-  :root { --bg: #F6FAF9; color-scheme: light; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0E1715; color-scheme: dark; } }
-  :root[data-theme="dark"] { --bg: #0E1715; color-scheme: dark; }
+  :root { --bg: #F3F4F6; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0F1114; color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg: #0F1114; color-scheme: dark; }
   html, body { height: 100%; }
   body { overflow: hidden; background: var(--bg); }
   #root { display: flex; height: 100%; flex: 1; }

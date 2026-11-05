@@ -309,7 +309,7 @@ export default function WorkoutScreen() {
               style={{ paddingHorizontal: space.md }}
             />
           )}
-          <Button big title="Terminer" variant={allDone ? 'done' : 'primary'} onPress={finish} style={{ flex: 1 }} />
+          <Button big title="Terminer" variant={allDone ? 'done' : 'secondary'} onPress={finish} style={{ flex: 1 }} />
         </Row>
       </View>
     </View>

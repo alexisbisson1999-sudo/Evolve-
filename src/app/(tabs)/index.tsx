@@ -4,7 +4,7 @@ import { Pressable, View } from 'react-native';
 import { BlockList } from '../../components/BlockList';
 import { Pictogram } from '../../components/Pictogram';
 import { ProgressRing } from '../../components/ProgressRing';
-import { Button, Card, Pill, Row, Screen, T, Text } from '../../components/ui';
+import { Button, Card, Pill, Row, Screen, softShadow, T, Text } from '../../components/ui';
 import { WeekStrip } from '../../components/WeekStrip';
 import { addDays, diffDays, formatLong, formatLongWithYear, mondayOf } from '../../domain/dates';
 import { sessionIdForDate } from '../../domain/program';
@@ -98,10 +98,10 @@ export default function TodayScreen() {
 
       {/* Séance du jour */}
       {session ? (
-        <View style={{ backgroundColor: c.tiles[kind], borderRadius: radius.xl, padding: space.xl, gap: space.md }}>
+        <View style={{ backgroundColor: c.tiles[kind], borderRadius: radius.xl, padding: space.xl, gap: space.md, ...softShadow(c.scheme) }}>
           <Row style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <View style={{ flex: 1, gap: 6 }}>
-              <T v="label" style={{ color: c.textMuted }}>
+              <T v="label" style={{ color: c.accent }}>
                 {isToday ? 'Séance du jour' : capitalize(formatLong(date))}
               </T>
               <T v="h1" style={{ fontSize: 26 }}>
@@ -137,7 +137,7 @@ export default function TodayScreen() {
           )}
         </View>
       ) : (
-        <View style={{ backgroundColor: c.tiles.mobilite, borderRadius: radius.xl, padding: space.xl, gap: 6 }}>
+        <View style={{ backgroundColor: c.tiles.mobilite, borderRadius: radius.xl, padding: space.xl, gap: 6, ...softShadow(c.scheme) }}>
           <T v="h1" style={{ fontSize: 26 }}>
             Jour de repos 🌿
           </T>

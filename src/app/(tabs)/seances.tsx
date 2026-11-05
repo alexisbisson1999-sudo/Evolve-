@@ -58,7 +58,7 @@ export default function SessionsScreen() {
                     width: 56,
                     height: 56,
                     borderRadius: 28,
-                    backgroundColor: c.tiles[s.kind],
+                    backgroundColor: c.surfaceAlt,
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}

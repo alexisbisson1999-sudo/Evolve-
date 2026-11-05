@@ -134,7 +134,7 @@ export function TimerPanel({
 
   return (
     <View
-      style={{ backgroundColor: isRest ? c.accentSoft : c.doneSoft, borderRadius: radius.lg, padding: space.md, gap: space.sm }}
+      style={{ backgroundColor: isRest ? c.surface : c.doneSoft, borderWidth: isRest ? 1 : 0, borderColor: c.border, borderRadius: radius.lg, padding: space.md, gap: space.sm }}
       accessibilityLiveRegion="polite"
     >
       <Row gap={space.md}>
@@ -151,7 +151,7 @@ export function TimerPanel({
           </T>
         </View>
       </Row>
-      <View style={{ height: 8, borderRadius: 4, backgroundColor: c.surface, overflow: 'hidden' }}>
+      <View style={{ height: 8, borderRadius: 4, backgroundColor: isRest ? c.surfaceAlt : c.surface, overflow: 'hidden' }}>
         <View style={{ width: `${Math.min(100, Math.max(0, progress * 100))}%`, height: 8, backgroundColor: tint }} />
       </View>
       {timer.quote ? (

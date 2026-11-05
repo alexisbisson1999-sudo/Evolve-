@@ -22,86 +22,54 @@ export interface Palette {
   tiles: Record<'force' | 'mini' | 'mobilite', string>;
 }
 
+/**
+ * Palette « Énergie sobre » : base neutre (gris clair et encre) pour ne pas distraire,
+ * une seule couleur vive (orange) réservée aux actions à faire — le chemin à suivre —
+ * et le vert uniquement pour ce qui est terminé.
+ */
 const light: Palette = {
   scheme: 'light',
-  bg: '#F4F5F7',
+  bg: '#F3F4F6',
   surface: '#FFFFFF',
   surfaceAlt: '#ECEEF1',
-  border: '#DADDE2',
-  text: '#121417',
-  textMuted: '#525A66',
-  textFaint: '#7C8592',
-  accent: '#1F6FEB',
+  border: '#DDE0E5',
+  text: '#14171C',
+  textMuted: '#555C66',
+  textFaint: '#737A84',
+  accent: '#D9481F',
   accentText: '#FFFFFF',
-  accentSoft: '#E3EDFD',
-  done: '#16804A',
-  doneSoft: '#DDF3E6',
-  danger: '#C62828',
-  grid: '#E3E6EA',
-  tiles: { force: '#E6EEFF', mini: '#FFF0DE', mobilite: '#EEE9FC' },
+  accentSoft: '#FCEAE4',
+  done: '#1E8E5A',
+  doneSoft: '#E3F3EA',
+  danger: '#A8231B',
+  grid: '#E6E8EB',
+  tiles: { force: '#FFFFFF', mini: '#FFFFFF', mobilite: '#FFFFFF' },
 };
 
 const dark: Palette = {
   scheme: 'dark',
-  bg: '#0D0F12',
-  surface: '#171A1F',
-  surfaceAlt: '#20242B',
-  border: '#2C313A',
-  text: '#F2F4F7',
-  textMuted: '#A9B1BD',
-  textFaint: '#7D8693',
-  accent: '#5B9BFF',
-  accentText: '#0D0F12',
-  accentSoft: '#1B2A44',
-  done: '#3CCB7F',
-  doneSoft: '#16301F',
-  danger: '#FF6B6B',
-  grid: '#262B33',
-  tiles: { force: '#1A2540', mini: '#33281A', mobilite: '#262038' },
+  bg: '#0F1114',
+  surface: '#181B20',
+  surfaceAlt: '#22262C',
+  border: '#2E333A',
+  text: '#F2F3F5',
+  textMuted: '#A7ADB6',
+  textFaint: '#7B828C',
+  accent: '#FF6A3D',
+  accentText: '#14171C',
+  accentSoft: '#3A2219',
+  done: '#36C47F',
+  doneSoft: '#14301F',
+  danger: '#FF7B72',
+  grid: '#262A30',
+  tiles: { force: '#181B20', mini: '#181B20', mobilite: '#181B20' },
 };
 
-/** « Douceur » : clair et apaisant, contrastes francs, accent vert d'eau. */
-const douceurLight: Palette = {
-  scheme: 'light',
-  bg: '#F6FAF9',
-  surface: '#FFFFFF',
-  surfaceAlt: '#ECF3F1',
-  border: '#D3E0DC',
-  text: '#16302B',
-  textMuted: '#4A615C',
-  textFaint: '#71857F',
-  accent: '#1F7F72',
-  accentText: '#FFFFFF',
-  accentSoft: '#DCEFEB',
-  done: '#2F8549',
-  doneSoft: '#DFF1E3',
-  danger: '#B93C12',
-  grid: '#E2EBE8',
-  tiles: { force: '#DDF1EC', mini: '#FFF1DB', mobilite: '#ECE8FA' },
-};
-
-const douceurDark: Palette = {
-  scheme: 'dark',
-  bg: '#0E1715',
-  surface: '#17221F',
-  surfaceAlt: '#1E2B28',
-  border: '#2B3B37',
-  text: '#EDF5F3',
-  textMuted: '#A6B9B4',
-  textFaint: '#7D918B',
-  accent: '#5CC4B2',
-  accentText: '#0E1715',
-  accentSoft: '#173A34',
-  done: '#5BC77A',
-  doneSoft: '#163322',
-  danger: '#FF8A65',
-  grid: '#24312E',
-  tiles: { force: '#173530', mini: '#33291A', mobilite: '#262139' },
-};
-
+// Les deux programmes partagent la même identité visuelle (le programme « douceur »
+// démarre simplement en mode clair).
 const THEMES: Record<string, { light: Palette; dark: Palette }> = {
   evolve: { light, dark },
-  douceur: { light: douceurLight, dark: douceurDark },
+  douceur: { light, dark },
 };
 
 export function usePalette(): Palette {
