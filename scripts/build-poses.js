@@ -338,6 +338,236 @@ poses['posture-enfant'] = {
   ],
 };
 
+
+/* =========================================================================
+ * Programme « Remise en forme en douceur » (aucune charge sur les épaules)
+ * ========================================================================= */
+
+const CHAIR = { type: 'box', x: 80, y: 52, w: 8, h: 40 }; // dossier de chaise, devant
+const SEAT = { type: 'box', x: 24, y: 72, w: 24, h: 20 }; // assise de chaise, derrière
+const HANDS_ON_HIPS = { to: 'hip', off: [5, -6], bend: 'back' };
+const SUPINE = { hip: [50, 87], t: 90, head: 0 };
+const FEET_DOWN = { a: [-140, -15] }; // allongée, genou plié, pied au sol
+const TABLETOP = { a: [180, -90] };
+const ARMS_ALONG = { a: [-90, -90] };
+
+poses['marche-sur-place'] = {
+  dur: 450,
+  hold: 50,
+  frames: [
+    { hip: [60, 52], t: 0, leg: { a: [55, 0] }, leg2: { a: [0, 0] }, arm: { a: [-20, -10] }, arm2: { a: [20, 35] } },
+    { hip: [60, 52], t: 0, leg: { a: [0, 0] }, leg2: { a: [55, 0] }, arm: { a: [20, 35] }, arm2: { a: [-20, -10] } },
+  ],
+};
+
+poses['marche-active'] = {
+  dur: 500,
+  hold: 0,
+  frames: [
+    { hip: [60, 52.5], t: 4, leg: { a: [24, 8] }, leg2: { a: [-22, -30] }, arm: { a: [-28, -15] }, arm2: { a: [28, 45] } },
+    { hip: [60, 52.5], t: 4, leg: { a: [-22, -30] }, leg2: { a: [24, 8] }, arm: { a: [28, 45] }, arm2: { a: [-28, -15] } },
+  ],
+};
+
+poses['montees-genoux'] = {
+  dur: 900,
+  hold: 200,
+  frames: [
+    { hip: [60, 52], t: 0, leg: { a: [0, 0] }, leg2: { a: [0, 0] }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+    { hip: [60, 52], t: 0, leg: { a: [85, 0] }, leg2: { a: [0, 0] }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+  ],
+};
+
+poses['cercles-hanches'] = {
+  loop: 'cycle',
+  dur: 600,
+  hold: 0,
+  frames: [[60, 52], [63, 51.5], [60, 51], [57, 51.5], [60, 52]].map((hip) => ({
+    hip,
+    t: (60 - hip[0]) * 1.5,
+    leg: { to: [58, GROUND], bend: 'front' },
+    leg2: { to: [62, GROUND], bend: 'front' },
+    arm: HANDS_ON_HIPS,
+  })),
+};
+
+poses['balancier-jambe'] = {
+  dur: 800,
+  hold: 50,
+  frames: [
+    { hip: [60, 52], t: -4, leg: { a: [38, 25] }, leg2: { a: [0, 0] }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+    { hip: [60, 52], t: 6, leg: { a: [-28, -28] }, leg2: { a: [0, 0] }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+  ],
+};
+
+poses['bascule-bassin'] = {
+  dur: 1400,
+  hold: 400,
+  frames: [
+    { hip: [59, 53], t: 6, arch: -5, leg: { to: [60, GROUND], bend: 'front' }, arm: HANDS_ON_HIPS },
+    { hip: [62, 54], t: -4, arch: 4, leg: { to: [60, GROUND], bend: 'front' }, arm: HANDS_ON_HIPS },
+  ],
+};
+
+{
+  const crossed = { to: 'shoulder', off: [6, 7], bend: 'down' };
+  poses['assis-debout'] = {
+    dur: 1600,
+    hold: 400,
+    frames: [
+      { hip: [42, 70], t: 22, leg: { to: [62, GROUND], bend: 'up' }, arm: crossed, props: [SEAT] },
+      { hip: [44, 66], t: 42, leg: { to: [62, GROUND], bend: 'up' }, arm: crossed, props: [SEAT] },
+      { hip: [58, 52], t: 2, leg: { to: [62, GROUND], bend: 'front' }, arm: crossed, props: [SEAT] },
+    ],
+  };
+}
+
+{
+  const sh = [80, 84];
+  const legs = { leg: { to: [38, GROUND], bend: 'up' } };
+  const down = { hip: [56, 85], t: torsoTo([56, 85], sh), head: 0, ...legs, arm: ARMS_ALONG };
+  const up = { hip: [56, 74], t: torsoTo([56, 74], sh), head: 15, ...legs, arm: ARMS_ALONG };
+  poses['pont-fessier'] = { dur: 1300, hold: 600, frames: [down, up] };
+  poses['pont-fessier-tenu'] = { dur: 2500, hold: 1000, frames: [up, { ...up, hip: [56, 73] }] };
+}
+
+{
+  // Allongée sur le côté (vue de face) : la jambe du dessus s'écarte vers le haut.
+  const side = { hip: [44, 84], t: 90, head: -15, arm: { to: 'head', off: [2, 6], bend: 'down' } };
+  poses['abduction-allongee'] = {
+    dur: 1200,
+    hold: 400,
+    frames: [
+      { ...side, leg: { a: [-92, -92] }, leg2: { a: [-90, -90] } },
+      { ...side, leg: { a: [-118, -118] }, leg2: { a: [-90, -90] } },
+    ],
+  };
+  poses['adduction-allongee'] = {
+    dur: 1200,
+    hold: 400,
+    frames: [
+      { ...side, leg: { a: [-150, -40] }, leg2: { a: [-90, -90] } },
+      { ...side, leg: { a: [-150, -40] }, leg2: { a: [-102, -102] } },
+    ],
+  };
+  poses['coquillage'] = {
+    dur: 1200,
+    hold: 400,
+    frames: [
+      { ...side, leg: { a: [-60, -110] }, leg2: { a: [-60, -110] } },
+      { ...side, leg: { a: [-115, -95] }, leg2: { a: [-60, -110] } },
+    ],
+  };
+}
+
+poses['pas-chasses'] = {
+  dur: 550,
+  hold: 100,
+  frames: [
+    { hip: [56, 53], t: 0, leg: { a: [14, 10] }, leg2: { a: [-14, -10] }, arm: HANDS_ON_HIPS },
+    { hip: [64, 52], t: 0, leg: { a: [4, 2] }, leg2: { a: [-4, -2] }, arm: HANDS_ON_HIPS },
+  ],
+};
+
+poses['dead-bug-jambes'] = {
+  dur: 1500,
+  hold: 400,
+  frames: [
+    { ...SUPINE, leg: TABLETOP, leg2: TABLETOP, arm: ARMS_ALONG },
+    { ...SUPINE, leg: { a: [-105, -98] }, leg2: TABLETOP, arm: ARMS_ALONG },
+  ],
+};
+
+poses['releves-genoux-alternes'] = {
+  dur: 1200,
+  hold: 300,
+  frames: [
+    { ...SUPINE, leg: FEET_DOWN, leg2: FEET_DOWN, arm: ARMS_ALONG },
+    { ...SUPINE, leg: TABLETOP, leg2: FEET_DOWN, arm: ARMS_ALONG },
+  ],
+};
+
+poses['respiration-abdos'] = {
+  dur: 2500,
+  hold: 600,
+  frames: [
+    { ...SUPINE, arch: 0, leg: FEET_DOWN, arm: { to: 'hip', off: [9, -5], bend: 'up' } },
+    { ...SUPINE, arch: 3, leg: FEET_DOWN, arm: { to: 'hip', off: [9, -7], bend: 'up' } },
+  ],
+};
+
+poses['squat-sumo'] = {
+  dur: 1500,
+  hold: 300,
+  frames: [
+    { hip: [60, 52], t: 0, leg: { to: [64, GROUND], bend: 'front' }, leg2: { to: [56, GROUND], bend: 'front' }, arm: { to: 'shoulder', off: [10, 8], bend: 'down' } },
+    { hip: [58, 64], t: 14, leg: { to: [64, GROUND], bend: 'front' }, leg2: { to: [56, GROUND], bend: 'front' }, arm: { to: 'shoulder', off: [10, 8], bend: 'down' } },
+  ],
+};
+
+poses['extension-hanche-debout'] = {
+  dur: 1200,
+  hold: 400,
+  frames: [
+    { hip: [62, 52], t: 8, leg: { a: [0, 0] }, leg2: { a: [-2, -2] }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+    { hip: [62, 52], t: 14, leg: { a: [-30, -26] }, leg2: { a: [-2, -2] }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+  ],
+};
+
+{
+  const wall = [{ type: 'wall', x: 86 }];
+  poses['etirement-mollets'] = {
+    dur: 2000,
+    hold: 1000,
+    frames: [
+      { hip: [56, 54], t: 18, leg: { to: [70, GROUND], bend: 'front' }, leg2: { to: [36, GROUND], bend: 'down' }, arm: { to: [85, 36], bend: 'down' }, props: wall },
+      { hip: [60, 56], t: 22, leg: { to: [70, GROUND], bend: 'front' }, leg2: { to: [36, GROUND], bend: 'down' }, arm: { to: [85, 36], bend: 'down' }, props: wall },
+    ],
+  };
+}
+
+poses['etirement-quadriceps'] = {
+  frames: [
+    { hip: [62, 52], t: 2, leg: { a: [-4, -172] }, leg2: { a: [0, 0] }, arm2: { to: 'ankle', off: [0, 2], bend: 'back' }, arm: { to: [80, 52], bend: 'down' }, props: [CHAIR] },
+  ],
+};
+
+poses['genoux-poitrine'] = {
+  dur: 2200,
+  hold: 800,
+  frames: [
+    { ...SUPINE, leg: { a: [150, -90] }, arm: { to: 'knee', off: [0, 2], bend: 'down' } },
+    { ...SUPINE, leg: { a: [160, -80] }, arm: { to: 'knee', off: [0, 2], bend: 'down' } },
+  ],
+};
+
+poses['essuie-glaces'] = {
+  dur: 1600,
+  hold: 400,
+  frames: [
+    { ...SUPINE, leg: { a: [-140, -15] }, leg2: { a: [-140, -15] }, arm: { a: [90, 90] } },
+    { ...SUPINE, leg: { a: [-108, -55] }, leg2: { a: [-116, -45] }, arm: { a: [90, 90] } },
+  ],
+};
+
+poses['figure-4'] = {
+  dur: 2200,
+  hold: 900,
+  frames: [
+    { ...SUPINE, leg: { a: [-140, -15] }, leg2: { to: 'knee', off: [2, -2], bend: 'up' }, arm: ARMS_ALONG },
+    { ...SUPINE, leg: { a: [-165, -40] }, leg2: { to: 'knee', off: [2, -2], bend: 'up' }, arm: { to: 'knee', bend: 'down' } },
+  ],
+};
+
+poses['papillon'] = {
+  dur: 2200,
+  hold: 900,
+  frames: [
+    { hip: [48, 86], t: 0, leg: { a: [118, -62] }, arm: { to: 'ankle', off: [2, -2], bend: 'front' } },
+    { hip: [48, 86], t: 22, head: 5, leg: { a: [112, -64] }, arm: { to: 'ankle', off: [2, -2], bend: 'front' } },
+  ],
+};
+
 const out = path.join(__dirname, '..', 'content', 'poses.json');
 fs.writeFileSync(out, JSON.stringify(poses, null, 1) + '\n');
 console.log(`écrit ${out} (${Object.keys(poses).length} exercices)`);

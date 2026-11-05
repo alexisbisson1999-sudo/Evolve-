@@ -8,6 +8,7 @@
  */
 import motivationData from './motivation.json';
 import posesData from './poses.json';
+import douce from './programs/remise-en-forme-douce.json';
 import reprise from './programs/reprise-maison-4-semaines.json';
 import type { PoseAnimation } from '../src/domain/pose';
 import { validateProgram } from '../src/domain/program';
@@ -24,8 +25,22 @@ export function registerProgram(raw: unknown): Program {
 }
 
 registerProgram(reprise);
+registerProgram(douce);
 
-export const DEFAULT_PROGRAM_ID = 'reprise-maison-4-semaines';
+/**
+ * Programme proposé au premier lancement. Une version dédiée de l'app (ex. pour une cliente)
+ * se construit avec EXPO_PUBLIC_PROGRAM=<id du programme>.
+ */
+export const DEFAULT_PROGRAM_ID =
+  process.env.EXPO_PUBLIC_PROGRAM && programs.has(process.env.EXPO_PUBLIC_PROGRAM)
+    ? process.env.EXPO_PUBLIC_PROGRAM
+    : 'reprise-maison-4-semaines';
+
+/** Réglages de départ propres à chaque programme (objectifs, apparence). */
+export const PROGRAM_DEFAULTS: Record<string, { goalWeight: number; heightCm: number; theme: 'system' | 'light' | 'dark' }> = {
+  'reprise-maison-4-semaines': { goalWeight: 85, heightCm: 177, theme: 'system' },
+  'remise-en-forme-douce': { goalWeight: 75, heightCm: 165, theme: 'light' },
+};
 
 export function getProgram(id: string): Program {
   return programs.get(id) ?? (programs.get(DEFAULT_PROGRAM_ID) as Program);

@@ -209,9 +209,19 @@ export function resolveForDate(
 
 /* ---------- Libellés ---------- */
 
+/** Durée lisible : « 45 s », « 1 min 30 », « 20 min ». */
+export function durationLabel(sec: number): string {
+  if (sec < 90) return `${sec} s`;
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return s ? `${m} min ${String(s).padStart(2, '0')}` : `${m} min`;
+}
+
 export function targetLabel(b: ResolvedBlock): string {
   const side = b.perSide ? ` ${b.sideLabel}` : '';
-  if (b.duration !== undefined) return `${b.sets} × ${b.duration} s${side}`;
+  if (b.duration !== undefined) {
+    return b.sets === 1 ? `${durationLabel(b.duration)}${side}` : `${b.sets} × ${durationLabel(b.duration)}${side}`;
+  }
   return `${b.sets} × ${b.reps}${side}`;
 }
 

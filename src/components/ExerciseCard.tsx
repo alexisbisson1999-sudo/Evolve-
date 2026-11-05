@@ -1,5 +1,5 @@
 import { Pressable, Text, View } from 'react-native';
-import { clampRest, targetLabel, tempoShort } from '../domain/program';
+import { clampRest, durationLabel, targetLabel, tempoShort } from '../domain/program';
 import type { ActiveBlockState, ResolvedBlock } from '../domain/types';
 import { tap } from '../services/feedback';
 import { radius, space, usePalette } from '../theme';
@@ -120,7 +120,7 @@ export function ExerciseCard({
                   justifyContent: 'center',
                 }}
               >
-                <Text style={{ color: c.accentText, fontWeight: '800', fontSize: 16 }}>▶ {block.duration}s</Text>
+                <Text style={{ color: c.accentText, fontWeight: '800', fontSize: 16 }}>▶ {durationLabel(block.duration ?? 0)}</Text>
               </Pressable>
             ) : null}
           </View>

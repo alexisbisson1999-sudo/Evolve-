@@ -134,3 +134,22 @@ describe('fusion pour la synchro', () => {
     expect(mergeSynced(local, remote).settings.maxPushups).toBe(25);
   });
 });
+
+describe('programme « Remise en forme en douceur »', () => {
+  const d = getProgram('remise-en-forme-douce');
+  it('suit le planning renfo A/B, marche, mobilité', () => {
+    const w = Array.from({ length: 14 }, (_, i) => sessionIdForDate(d, START, addDays(START, i)));
+    expect(w).toEqual(['A', 'W', 'B', 'W', 'A', 'W', 'D', 'B', 'W', 'A', 'W', 'B', 'W', 'D']);
+  });
+  it('tient dans 30 minutes par jour', () => {
+    for (const id of Object.keys(d.sessions)) {
+      for (const week of [1, 2, 3, 4]) {
+        expect(resolveSession(d, id, week, opts).estimatedMinutes).toBeLessThanOrEqual(32);
+      }
+    }
+  });
+  it('n’utilise aucune charge ni pompe', () => {
+    expect(Object.values(d.exercises).some((e) => e.usesLoad)).toBe(false);
+    expect(JSON.stringify(d.sessions)).not.toContain('repsPctMax');
+  });
+});

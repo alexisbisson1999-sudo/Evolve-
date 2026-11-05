@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { DEFAULT_PROGRAM_ID } from '../../content';
+import { DEFAULT_PROGRAM_ID, PROGRAM_DEFAULTS } from '../../content';
 import { mondayOf, todayISO } from '../domain/dates';
 import type { SyncedData } from '../domain/merge';
 import { clampRest } from '../domain/program';
@@ -18,6 +18,8 @@ import type {
 
 export const newId = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 
+const START = PROGRAM_DEFAULTS[DEFAULT_PROGRAM_ID] ?? { goalWeight: 85, heightCm: 177, theme: 'system' as const };
+
 export const defaultSettings = (): Settings => ({
   programId: DEFAULT_PROGRAM_ID,
   startDate: mondayOf(todayISO()),
@@ -27,10 +29,10 @@ export const defaultSettings = (): Settings => ({
   reminderMinute: 0,
   soundEnabled: true,
   vibrationEnabled: true,
-  theme: 'system',
+  theme: START.theme,
   autoProgression: true,
-  heightCm: 177,
-  goalWeight: 85,
+  heightCm: START.heightCm,
+  goalWeight: START.goalWeight,
   goalWaist: undefined,
 });
 

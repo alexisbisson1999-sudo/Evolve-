@@ -1,18 +1,18 @@
-import { getPose, getProgram, DEFAULT_PROGRAM_ID, pickMotivation } from '../../../content';
+import { getPose, listPrograms, pickMotivation } from '../../../content';
 import { LEN, poseAt, solvePose } from '../pose';
 import { tempoShort } from '../program';
 
 const dist = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 
 describe('pictogrammes', () => {
-  const program = getProgram(DEFAULT_PROGRAM_ID);
+  const ids = listPrograms().flatMap((p) => Object.keys(p.exercises));
 
   it('existe pour chaque exercice du programme', () => {
-    for (const id of Object.keys(program.exercises)) expect(getPose(id)).toBeDefined();
+    for (const id of ids) expect(getPose(id)).toBeDefined();
   });
 
   it('garde des membres de longueur constante pendant l’animation', () => {
-    for (const id of Object.keys(program.exercises)) {
+    for (const id of ids) {
       const anim = getPose(id)!;
       for (const ms of [0, 400, 900, 1700, 2600]) {
         const sk = solvePose(poseAt(anim, ms));
@@ -43,5 +43,14 @@ describe('textes', () => {
   it('fournit des phrases d’encouragement', () => {
     expect(pickMotivation('rest').length).toBeGreaterThan(5);
     expect(pickMotivation('rest', 3)).toBe(pickMotivation('rest', 3));
+  });
+});
+
+describe('durées', () => {
+  it('affiche les durées longues en minutes', () => {
+    const { durationLabel } = jest.requireActual('../program');
+    expect(durationLabel(45)).toBe('45 s');
+    expect(durationLabel(90)).toBe('1 min 30');
+    expect(durationLabel(1200)).toBe('20 min');
   });
 });

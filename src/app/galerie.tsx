@@ -2,16 +2,16 @@ import { Stack } from 'expo-router';
 import { View } from 'react-native';
 import { Pictogram } from '../components/Pictogram';
 import { Screen, T } from '../components/ui';
-import { useProgram } from '../hooks/useProgram';
+import { listPrograms } from '../../content';
 
 /** Galerie de tous les pictogrammes animés (vérification du contenu). */
 export default function GalleryScreen() {
-  const program = useProgram();
+  const exercises = Object.assign({}, ...listPrograms().map((p) => p.exercises)) as Record<string, { name: string }>;
   return (
     <Screen>
       <Stack.Screen options={{ title: 'Mouvements' }} />
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-        {Object.entries(program.exercises).map(([id, ex]) => (
+        {Object.entries(exercises).map(([id, ex]) => (
           <View key={id} style={{ width: 160, gap: 4 }}>
             <Pictogram exerciseId={id} size={160} />
             <View style={{ flexDirection: 'row', gap: 4 }}>

@@ -76,6 +76,8 @@ export interface Program {
   description: string;
   weeks: number;
   repeatLastWeek: boolean;
+  /** Thème visuel associé (voir src/theme). Défaut : « evolve ». */
+  theme?: string;
   equipment: string[];
   schedule: {
     rotations: Record<string, string[]>;

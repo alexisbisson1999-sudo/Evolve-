@@ -4,12 +4,12 @@
  *
  * Usage :
  *   npx expo export --platform web --output-dir dist-web   (avec asyncRoutes.web = false)
- *   node scripts/build-web-artifact.js dist-web evolve.html
+ *   node scripts/build-web-artifact.js dist-web evolve.html [titre]
  */
 const fs = require('fs');
 const path = require('path');
 
-const [, , dir, out] = process.argv;
+const [, , dir, out, title = 'Evolve'] = process.argv;
 if (!dir || !out) {
   console.error('usage : node scripts/build-web-artifact.js <dossier-export> <sortie.html>');
   process.exit(1);
@@ -33,12 +33,12 @@ js = js.replace(/"\/assets\/([^"]+)"/g, (whole, rel) => {
 // Empêche une balise </script> dans le code de fermer le bloc inline.
 js = js.replace(/<\/script/gi, '<\\/script');
 
-const page = `<title>Evolve</title>
+const page = `<title>${title}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
-  :root { --bg: #F4F5F7; color-scheme: light; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0D0F12; color-scheme: dark; } }
-  :root[data-theme="dark"] { --bg: #0D0F12; color-scheme: dark; }
+  :root { --bg: #F6FAF9; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0E1715; color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg: #0E1715; color-scheme: dark; }
   html, body { height: 100%; }
   body { overflow: hidden; background: var(--bg); }
   #root { display: flex; height: 100%; flex: 1; }

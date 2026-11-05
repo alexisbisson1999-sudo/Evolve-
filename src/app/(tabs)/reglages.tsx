@@ -5,6 +5,7 @@ import { showDialog } from '../../components/Dialog';
 import { Button, Card, Field, Row, Screen, Segmented, Stepper, T, formatKg } from '../../components/ui';
 import { addDays, formatLongWithYear, formatTime, mondayOf, todayISO } from '../../domain/dates';
 import type { ThemePref } from '../../domain/types';
+import { listPrograms } from '../../../content';
 import { useProgram } from '../../hooks/useProgram';
 import { ensurePermission } from '../../services/notifications';
 import { getSession, signIn, signOut, signUp, syncConfigured, syncNow } from '../../services/sync';
@@ -105,6 +106,8 @@ export default function SettingsScreen() {
   const settings = useAppStore((s) => s.settings);
   const update = useAppStore((s) => s.updateSettings);
   const program = useProgram();
+  const programs = listPrograms();
+  const usesPushupMax = Object.values(program.sessions).some((ses) => ses.blocks.some((b) => b.params.some((w) => w.repsPctMax !== undefined)));
   const [goalWaist, setGoalWaist] = useState(settings.goalWaist ? String(settings.goalWaist) : '');
 
   const exportData = async () => {
@@ -124,7 +127,20 @@ export default function SettingsScreen() {
     <Screen>
       <Card>
         <T v="title">Programme</T>
-        <T v="muted">{program.name}</T>
+        {programs.length > 1 ? (
+          <View style={{ gap: space.sm }}>
+            {programs.map((p) => (
+              <Button
+                key={p.id}
+                title={p.id === program.id ? `✓ ${p.name}` : p.name}
+                variant={p.id === program.id ? 'primary' : 'secondary'}
+                onPress={() => update({ programId: p.id })}
+              />
+            ))}
+          </View>
+        ) : (
+          <T v="muted">{program.name}</T>
+        )}
         <T v="label">Date de départ</T>
         <Stepper
           label="date de départ"
@@ -140,9 +156,13 @@ export default function SettingsScreen() {
         </Row>
         <T v="small">La semaine du programme et l'alternance A/B sont calculées à partir de cette date.</T>
 
-        <T v="label">Max de pompes (une série)</T>
-        <Stepper label="max de pompes" value={settings.maxPushups} onChange={(v) => update({ maxPushups: v })} min={1} max={150} bigValue />
-        <T v="small">Les séries de pompes sont calculées en pourcentage de ce max. Refais un test toutes les 2 à 4 semaines.</T>
+        {usesPushupMax && (
+          <>
+            <T v="label">Max de pompes (une série)</T>
+            <Stepper label="max de pompes" value={settings.maxPushups} onChange={(v) => update({ maxPushups: v })} min={1} max={150} bigValue />
+            <T v="small">Les séries de pompes sont calculées en pourcentage de ce max. Refais un test toutes les 2 à 4 semaines.</T>
+          </>
+        )}
       </Card>
 
       <Card>

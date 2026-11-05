@@ -1,0 +1,1258 @@
+{
+  "id": "remise-en-forme-douce",
+  "version": 1,
+  "name": "Remise en forme en douceur",
+  "description": "30 minutes par jour, sans course ni charge sur les épaules : renforcement progressif des fessiers, hanches, cuisses et ventre, marche active et mobilité. Objectif : perdre du poids en douceur et se remuscler sans se blesser.",
+  "theme": "douceur",
+  "weeks": 4,
+  "repeatLastWeek": true,
+  "equipment": [
+    "Une chaise stable",
+    "Un tapis",
+    "Une serviette",
+    "Un mur"
+  ],
+  "schedule": {
+    "rotations": {
+      "renfo": [
+        "A",
+        "B"
+      ]
+    },
+    "weekdays": {
+      "1": "rotation:renfo",
+      "2": "W",
+      "3": "rotation:renfo",
+      "4": "W",
+      "5": "rotation:renfo",
+      "6": "W",
+      "0": "D"
+    }
+  },
+  "warmup": {
+    "title": "Échauffement doux",
+    "blocks": [
+      {
+        "exercise": "marche-sur-place",
+        "params": [
+          {
+            "sets": 1,
+            "duration": 45,
+            "rest": 0
+          }
+        ]
+      },
+      {
+        "exercise": "cercles-hanches",
+        "perSide": true,
+        "sideLabel": "par sens",
+        "params": [
+          {
+            "sets": 1,
+            "reps": 8,
+            "rest": 0
+          }
+        ]
+      },
+      {
+        "exercise": "montees-genoux",
+        "perSide": true,
+        "params": [
+          {
+            "sets": 1,
+            "reps": 8,
+            "tempo": "2-0-2-0",
+            "rest": 0
+          }
+        ]
+      },
+      {
+        "exercise": "balancier-jambe",
+        "perSide": true,
+        "params": [
+          {
+            "sets": 1,
+            "reps": 10,
+            "rest": 0
+          }
+        ]
+      },
+      {
+        "exercise": "bascule-bassin",
+        "params": [
+          {
+            "sets": 1,
+            "reps": 10,
+            "tempo": "2-1-2-1",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  "sessions": {
+    "A": {
+      "id": "A",
+      "name": "Bas du corps & ventre",
+      "shortName": "A",
+      "kind": "force",
+      "description": "Cuisses, fessiers et ventre au poids du corps, avec une chaise. Mouvements lents et contrôlés.",
+      "warmup": true,
+      "blocks": [
+        {
+          "exercise": "assis-debout",
+          "params": [
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "3-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "3-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "3-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "4-1-2-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "pont-fessier",
+          "note": "Amplitude courte au début, on monte un peu plus haut chaque semaine.",
+          "params": [
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-2-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-2-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "2-2-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "3-2-2-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "abduction-allongee",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "pas-chasses",
+          "params": [
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "duration": 40,
+              "rest": 45
+            },
+            {
+              "sets": 3,
+              "duration": 40,
+              "rest": 45
+            },
+            {
+              "sets": 3,
+              "duration": 45,
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "dead-bug-jambes",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "reps": 5,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 6,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 7,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "respiration-abdos",
+          "params": [
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 40,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            }
+          ]
+        }
+      ]
+    },
+    "B": {
+      "id": "B",
+      "name": "Fessiers, hanches & cuisses",
+      "shortName": "B",
+      "kind": "force",
+      "description": "Travail ciblé des hanches et des fessiers, debout avec appui sur la chaise puis au sol.",
+      "warmup": true,
+      "blocks": [
+        {
+          "exercise": "squat-sumo",
+          "params": [
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "3-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "3-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "3-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "4-1-2-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "extension-hanche-debout",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "coquillage",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-1-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-1-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "2-1-1-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 12,
+              "tempo": "2-1-1-0",
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "pont-fessier-tenu",
+          "params": [
+            {
+              "sets": 2,
+              "duration": 15,
+              "rest": 45
+            },
+            {
+              "sets": 3,
+              "duration": 15,
+              "rest": 45
+            },
+            {
+              "sets": 3,
+              "duration": 20,
+              "rest": 45
+            },
+            {
+              "sets": 3,
+              "duration": 25,
+              "rest": 45
+            }
+          ]
+        },
+        {
+          "exercise": "adduction-allongee",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "2-1-2-0",
+              "rest": 45
+            }
+          ]
+        }
+      ]
+    },
+    "W": {
+      "id": "W",
+      "name": "Marche active",
+      "shortName": "M",
+      "kind": "mini",
+      "description": "Marche d'un bon pas, sans dépasser 5 km. Tu dois pouvoir parler, mais un peu essoufflée. Étirements doux au retour.",
+      "warmup": false,
+      "blocks": [
+        {
+          "exercise": "marche-active",
+          "params": [
+            {
+              "sets": 1,
+              "duration": 1200,
+              "rest": 0
+            },
+            {
+              "sets": 1,
+              "duration": 1320,
+              "rest": 0
+            },
+            {
+              "sets": 1,
+              "duration": 1500,
+              "rest": 0
+            },
+            {
+              "sets": 1,
+              "duration": 1500,
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "etirement-mollets",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 1,
+              "duration": 30,
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "etirement-quadriceps",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 1,
+              "duration": 30,
+              "rest": 0
+            }
+          ]
+        }
+      ]
+    },
+    "D": {
+      "id": "D",
+      "name": "Mobilité douce",
+      "shortName": "D",
+      "kind": "mobilite",
+      "description": "Séance de récupération au sol : hanches, bas du dos et arrière des cuisses. Respire lentement, jamais de douleur.",
+      "warmup": false,
+      "blocks": [
+        {
+          "exercise": "genoux-poitrine",
+          "params": [
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 40,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "essuie-glaces",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "reps": 6,
+              "tempo": "3-1-3-0",
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "3-1-3-0",
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "reps": 8,
+              "tempo": "3-1-3-0",
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "reps": 10,
+              "tempo": "3-1-3-0",
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "figure-4",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 40,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "ischios-sol",
+          "perSide": true,
+          "params": [
+            {
+              "sets": 2,
+              "duration": 20,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 25,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "papillon",
+          "params": [
+            {
+              "sets": 2,
+              "duration": 30,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 40,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            },
+            {
+              "sets": 2,
+              "duration": 45,
+              "rest": 0
+            }
+          ]
+        },
+        {
+          "exercise": "respiration-abdos",
+          "params": [
+            {
+              "sets": 1,
+              "duration": 60,
+              "rest": 0
+            },
+            {
+              "sets": 1,
+              "duration": 60,
+              "rest": 0
+            },
+            {
+              "sets": 1,
+              "duration": 90,
+              "rest": 0
+            },
+            {
+              "sets": 1,
+              "duration": 90,
+              "rest": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "exercises": {
+    "marche-sur-place": {
+      "name": "Marche sur place",
+      "muscles": [
+        "Cœur",
+        "Jambes"
+      ],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Marche sur place à un rythme confortable.",
+        "Les bras accompagnent doucement le mouvement."
+      ],
+      "tips": [
+        "Respire calmement.",
+        "Bras droit : laisse-le relâché si l'épaule est sensible."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=marche+sur+place+%C3%A9chauffement+senior"
+        }
+      ]
+    },
+    "cercles-hanches": {
+      "name": "Cercles de hanches",
+      "muscles": [
+        "Hanches",
+        "Bas du dos"
+      ],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Debout, pieds écartés largeur de hanches, mains sur les hanches.",
+        "Dessine de grands cercles lents avec le bassin.",
+        "Change de sens."
+      ],
+      "tips": [
+        "Les épaules restent immobiles.",
+        "Mouvement lent et ample, sans forcer."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=cercles+de+hanches+%C3%A9chauffement"
+        }
+      ]
+    },
+    "montees-genoux": {
+      "name": "Montées de genoux lentes",
+      "muscles": [
+        "Hanches",
+        "Ventre"
+      ],
+      "equipment": [
+        "Chaise (appui)"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Debout, la main gauche sur le dossier d'une chaise.",
+        "Monte un genou vers la hanche, repose, puis l'autre."
+      ],
+      "tips": [
+        "Garde le dos droit.",
+        "Monte seulement jusqu'où c'est confortable."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=mont%C3%A9es+de+genoux+lentes+%C3%A9chauffement"
+        }
+      ]
+    },
+    "balancier-jambe": {
+      "name": "Balancier de jambe",
+      "muscles": [
+        "Hanches",
+        "Fessiers"
+      ],
+      "equipment": [
+        "Chaise (appui)"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Main gauche sur le dossier de la chaise.",
+        "Balance une jambe d'avant en arrière, souplement.",
+        "Change de jambe en te tournant (garde l'appui à gauche si besoin)."
+      ],
+      "tips": [
+        "Petite amplitude au début.",
+        "Le buste ne bouge pas."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=balancier+de+jambe+mobilit%C3%A9+hanche"
+        }
+      ]
+    },
+    "bascule-bassin": {
+      "name": "Bascule du bassin",
+      "muscles": [
+        "Bas du dos",
+        "Ventre"
+      ],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Debout, genoux légèrement fléchis, mains sur les hanches.",
+        "Creuse doucement le bas du dos, puis enroule le bassin vers l'avant."
+      ],
+      "tips": [
+        "Mouvement lent et contrôlé.",
+        "Seul le bassin bouge."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=bascule+du+bassin+debout"
+        }
+      ]
+    },
+    "assis-debout": {
+      "name": "Assis-debout sur chaise",
+      "muscles": [
+        "Cuisses",
+        "Fessiers"
+      ],
+      "equipment": [
+        "Chaise stable"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Assise au bord d'une chaise, pieds à plat largeur de hanches, bras croisés sur la poitrine.",
+        "Penche le buste vers l'avant et lève-toi en poussant dans les talons.",
+        "Rassieds-toi lentement en contrôlant la descente."
+      ],
+      "tips": [
+        "Ne t'aide pas des mains (épaule droite au repos).",
+        "Les genoux restent dans l'axe des pieds.",
+        "Trop dur ? Ajoute un coussin sur la chaise."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=assis+debout+chaise+exercice+senior"
+        }
+      ]
+    },
+    "pont-fessier": {
+      "name": "Pont fessier",
+      "muscles": [
+        "Fessiers",
+        "Arrière des cuisses"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le dos, genoux pliés, pieds à plat près des fesses, bras le long du corps.",
+        "Serre les fessiers et décolle le bassin.",
+        "Tiens 2 secondes en haut puis redescends lentement."
+      ],
+      "tips": [
+        "Semaines 1-2 : monte à mi-hauteur seulement.",
+        "Pieds proches des fesses = moins de travail pour l'arrière des cuisses.",
+        "Crampe à l'arrière de la cuisse ? Rapproche les pieds et réduis la hauteur."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=pont+fessier+d%C3%A9butant+technique"
+        }
+      ]
+    },
+    "pont-fessier-tenu": {
+      "name": "Pont fessier tenu",
+      "muscles": [
+        "Fessiers",
+        "Arrière des cuisses"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Monte en pont fessier, à hauteur confortable.",
+        "Tiens la position en serrant les fessiers et en respirant."
+      ],
+      "tips": [
+        "Pieds proches des fesses.",
+        "Arrête si l'arrière de la cuisse tire fort."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=pont+fessier+isom%C3%A9trique"
+        }
+      ]
+    },
+    "abduction-allongee": {
+      "name": "Élévation de jambe sur le côté",
+      "muscles": [
+        "Hanches",
+        "Fessiers (côté)"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le côté gauche, tête posée sur le bras ou un coussin.",
+        "Jambe du dessous pliée, jambe du dessus tendue.",
+        "Monte la jambe du dessus d'environ 30 cm puis redescends lentement."
+      ],
+      "tips": [
+        "La pointe du pied reste vers l'avant, pas vers le plafond.",
+        "Ne t'appuie pas sur le bras droit : pour le côté droit, cale-toi avec un coussin."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=abduction+hanche+allong%C3%A9e+sur+le+c%C3%B4t%C3%A9"
+        }
+      ]
+    },
+    "pas-chasses": {
+      "name": "Pas chassés latéraux",
+      "muscles": [
+        "Hanches",
+        "Cuisses",
+        "Cœur"
+      ],
+      "equipment": [],
+      "usesLoad": false,
+      "steps": [
+        "Genoux légèrement fléchis, fais deux ou trois pas sur le côté.",
+        "Reviens dans l'autre sens, sans sauter."
+      ],
+      "tips": [
+        "Garde les pieds au sol, pas de saut.",
+        "Accélère un peu si c'est facile."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=pas+chass%C3%A9s+lat%C3%A9raux+sans+saut"
+        }
+      ]
+    },
+    "dead-bug-jambes": {
+      "name": "Dead bug jambes seules",
+      "muscles": [
+        "Ventre (profond)"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le dos, bras le long du corps, genoux pliés à 90° au-dessus des hanches.",
+        "Descends doucement un pied vers le sol en gardant le bas du dos plaqué.",
+        "Remonte et alterne."
+      ],
+      "tips": [
+        "Expire en descendant le pied.",
+        "Trop dur ? Pose les pieds au sol et fais glisser un talon à la fois."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=dead+bug+jambes+d%C3%A9butant"
+        }
+      ]
+    },
+    "respiration-abdos": {
+      "name": "Respiration abdominale",
+      "muscles": [
+        "Ventre (profond)",
+        "Plancher pelvien"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée, genoux pliés, mains sur le ventre.",
+        "Inspire en gonflant le ventre.",
+        "Expire longuement en rentrant le nombril vers la colonne."
+      ],
+      "tips": [
+        "Expiration deux fois plus longue que l'inspiration.",
+        "Idéal pour finir la séance au calme."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=respiration+abdominale+transverse+allong%C3%A9e"
+        }
+      ]
+    },
+    "squat-sumo": {
+      "name": "Squat sumo partiel",
+      "muscles": [
+        "Intérieur des cuisses",
+        "Fessiers"
+      ],
+      "equipment": [
+        "Chaise (appui si besoin)"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Pieds écartés plus larges que les hanches, pointes vers l'extérieur.",
+        "Descends en poussant les genoux vers l'extérieur, mains jointes devant la poitrine.",
+        "Remonte en serrant les fessiers."
+      ],
+      "tips": [
+        "Descends seulement à mi-hauteur au début.",
+        "Besoin d'équilibre ? Main gauche sur le dossier de la chaise."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=squat+sumo+poids+du+corps+d%C3%A9butant"
+        }
+      ]
+    },
+    "extension-hanche-debout": {
+      "name": "Extension de hanche debout",
+      "muscles": [
+        "Fessiers"
+      ],
+      "equipment": [
+        "Chaise (appui)"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Debout face au dossier d'une chaise, main gauche posée dessus.",
+        "Jambe tendue, emmène-la vers l'arrière en serrant le fessier.",
+        "Reviens lentement, sans poser le pied si possible."
+      ],
+      "tips": [
+        "Ne cambre pas le dos : petit mouvement, gros serrage du fessier.",
+        "Le buste reste droit."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=extension+de+hanche+debout+chaise"
+        }
+      ]
+    },
+    "coquillage": {
+      "name": "Coquillage (clamshell)",
+      "muscles": [
+        "Fessiers (côté)",
+        "Hanches"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le côté, genoux pliés, talons alignés avec les fesses.",
+        "Garde les pieds collés et ouvre le genou du dessus.",
+        "Referme lentement."
+      ],
+      "tips": [
+        "Le bassin ne bascule pas vers l'arrière.",
+        "Pour le côté droit, cale la tête sur un coussin plutôt que sur le bras."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=clamshell+exercice+fessier"
+        }
+      ]
+    },
+    "adduction-allongee": {
+      "name": "Élévation intérieur de cuisse",
+      "muscles": [
+        "Intérieur des cuisses"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le côté, jambe du dessus pliée, pied posé devant le genou du dessous.",
+        "Monte la jambe du dessous tendue de quelques centimètres.",
+        "Redescends lentement."
+      ],
+      "tips": [
+        "Petite amplitude, c'est normal.",
+        "Garde la pointe du pied vers l'avant."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=adduction+hanche+allong%C3%A9e+int%C3%A9rieur+cuisse"
+        }
+      ]
+    },
+    "marche-active": {
+      "name": "Marche active",
+      "muscles": [
+        "Cœur",
+        "Jambes",
+        "Fessiers"
+      ],
+      "equipment": [
+        "Bonnes chaussures"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Marche d'un bon pas : tu peux parler, mais tu es un peu essoufflée.",
+        "Les 3 premières minutes plus tranquilles, puis accélère."
+      ],
+      "tips": [
+        "Ne dépasse pas 5 km.",
+        "Pas de course ni de petites foulées sautées.",
+        "Bras droit relâché, sans balancer fort si l'épaule est sensible."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=marche+active+technique+perte+de+poids"
+        }
+      ]
+    },
+    "etirement-mollets": {
+      "name": "Étirement des mollets",
+      "muscles": [
+        "Mollets"
+      ],
+      "equipment": [
+        "Mur"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Face au mur, mains à hauteur de poitrine, une jambe en arrière tendue.",
+        "Plie la jambe avant jusqu'à sentir l'étirement du mollet arrière."
+      ],
+      "tips": [
+        "Talon arrière au sol.",
+        "Appuie surtout avec la main gauche."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+mollets+au+mur"
+        }
+      ]
+    },
+    "etirement-quadriceps": {
+      "name": "Étirement de l'avant des cuisses",
+      "muscles": [
+        "Cuisses (avant)"
+      ],
+      "equipment": [
+        "Chaise (appui)"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Debout, main sur le dossier de la chaise.",
+        "Attrape la cheville avec la main libre et rapproche le talon des fesses."
+      ],
+      "tips": [
+        "Genoux côte à côte.",
+        "Difficile d'attraper la cheville ? Utilise une serviette autour du pied."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+quadriceps+debout+chaise"
+        }
+      ]
+    },
+    "genoux-poitrine": {
+      "name": "Genoux à la poitrine",
+      "muscles": [
+        "Bas du dos",
+        "Fessiers"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le dos, ramène les genoux vers la poitrine.",
+        "Tiens-les derrière les cuisses et respire."
+      ],
+      "tips": [
+        "Utilise surtout le bras gauche si l'épaule droite est sensible.",
+        "Relâche les épaules au sol."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=genoux+poitrine+%C3%A9tirement+dos"
+        }
+      ]
+    },
+    "essuie-glaces": {
+      "name": "Essuie-glaces",
+      "muscles": [
+        "Hanches",
+        "Bas du dos"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le dos, genoux pliés, pieds au sol écartés.",
+        "Laisse tomber les deux genoux d'un côté, puis de l'autre."
+      ],
+      "tips": [
+        "Les épaules restent au sol.",
+        "Mouvement lent, sans forcer."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=essuie+glace+genoux+mobilit%C3%A9+hanches"
+        }
+      ]
+    },
+    "figure-4": {
+      "name": "Étirement fessier en 4",
+      "muscles": [
+        "Fessiers",
+        "Hanches"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le dos, genoux pliés.",
+        "Pose une cheville sur le genou opposé.",
+        "Rapproche doucement les jambes de toi jusqu'à sentir l'étirement du fessier."
+      ],
+      "tips": [
+        "Si tirer avec les bras gêne l'épaule, reste simplement pied au sol.",
+        "Respire lentement."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+fessier+allong%C3%A9+figure+4"
+        }
+      ]
+    },
+    "ischios-sol": {
+      "name": "Étirement doux arrière des cuisses",
+      "muscles": [
+        "Arrière des cuisses"
+      ],
+      "equipment": [
+        "Tapis",
+        "Serviette"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Allongée sur le dos, une serviette autour du pied.",
+        "Monte la jambe tendue jusqu'à une légère tension, l'autre genou plié au sol."
+      ],
+      "tips": [
+        "Tension légère seulement : on se remuscle progressivement.",
+        "Tiens la serviette surtout avec la main gauche."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+ischio+jambiers+allong%C3%A9+serviette+doux"
+        }
+      ]
+    },
+    "papillon": {
+      "name": "Papillon",
+      "muscles": [
+        "Intérieur des cuisses",
+        "Hanches"
+      ],
+      "equipment": [
+        "Tapis"
+      ],
+      "usesLoad": false,
+      "steps": [
+        "Assise, dos droit, plantes de pieds l'une contre l'autre.",
+        "Laisse descendre doucement les genoux vers le sol."
+      ],
+      "tips": [
+        "Dos contre un mur si c'est plus confortable.",
+        "Ne pousse pas sur les genoux avec les bras."
+      ],
+      "links": [
+        {
+          "label": "Démonstrations (YouTube)",
+          "url": "https://www.youtube.com/results?search_query=%C3%A9tirement+papillon+assis"
+        }
+      ]
+    }
+  }
+}

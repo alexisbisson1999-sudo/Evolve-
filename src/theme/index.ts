@@ -1,4 +1,5 @@
 import { useColorScheme } from 'react-native';
+import { getProgram } from '../../content';
 import { useAppStore } from '../store/useAppStore';
 
 export interface Palette {
@@ -55,11 +56,55 @@ const dark: Palette = {
   grid: '#262B33',
 };
 
+/** « Douceur » : clair et apaisant, contrastes francs, accent vert d'eau. */
+const douceurLight: Palette = {
+  scheme: 'light',
+  bg: '#F6FAF9',
+  surface: '#FFFFFF',
+  surfaceAlt: '#ECF3F1',
+  border: '#D3E0DC',
+  text: '#16302B',
+  textMuted: '#4A615C',
+  textFaint: '#71857F',
+  accent: '#1F7F72',
+  accentText: '#FFFFFF',
+  accentSoft: '#DCEFEB',
+  done: '#2F8549',
+  doneSoft: '#DFF1E3',
+  danger: '#B93C12',
+  grid: '#E2EBE8',
+};
+
+const douceurDark: Palette = {
+  scheme: 'dark',
+  bg: '#0E1715',
+  surface: '#17221F',
+  surfaceAlt: '#1E2B28',
+  border: '#2B3B37',
+  text: '#EDF5F3',
+  textMuted: '#A6B9B4',
+  textFaint: '#7D918B',
+  accent: '#5CC4B2',
+  accentText: '#0E1715',
+  accentSoft: '#173A34',
+  done: '#5BC77A',
+  doneSoft: '#163322',
+  danger: '#FF8A65',
+  grid: '#24312E',
+};
+
+const THEMES: Record<string, { light: Palette; dark: Palette }> = {
+  evolve: { light, dark },
+  douceur: { light: douceurLight, dark: douceurDark },
+};
+
 export function usePalette(): Palette {
   const system = useColorScheme();
   const pref = useAppStore((s) => s.settings.theme);
+  const programId = useAppStore((s) => s.settings.programId);
+  const set = THEMES[getProgram(programId).theme ?? 'evolve'] ?? THEMES.evolve;
   const scheme = pref === 'system' ? (system === 'dark' ? 'dark' : 'light') : pref;
-  return scheme === 'dark' ? dark : light;
+  return scheme === 'dark' ? set.dark : set.light;
 }
 
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 };
