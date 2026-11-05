@@ -30,6 +30,9 @@ export default function SummaryScreen() {
   const history = useAppStore((s) => s.history);
   const loads = useAppStore((s) => s.loads);
   const settings = useAppStore((s) => s.settings);
+  const usesLoadOrPushups = !!log && Object.values(getProgram(log.programId).sessions).some((ses) =>
+    ses.blocks.some((b) => getProgram(log.programId).exercises[b.exercise]?.usesLoad || b.params.some((w) => w.repsPctMax !== undefined)),
+  );
   const [skipped, setSkipped] = useState<Set<string>>(() => new Set());
 
   // Progression automatique : recalculée quand le ressenti change.
@@ -141,8 +144,9 @@ export default function SummaryScreen() {
         ) : null}
         {log.feeling === 'hard' ? (
           <T v="small" style={{ textAlign: 'center' }}>
-            Astuce : baisse la charge d'un cran ou ton max de pompes (Réglages). En reprise, mieux vaut finir
-            facile que s'arrêter.
+            {usesLoadOrPushups
+              ? "Astuce : baisse la charge d'un cran ou ton max de pompes (Réglages). En reprise, mieux vaut finir facile que s'arrêter."
+              : 'Astuce : la prochaine fois, ralentis le rythme ou fais quelques répétitions de moins. Mieux vaut finir facile que s’arrêter.'}
           </T>
         ) : null}
       </Card>
